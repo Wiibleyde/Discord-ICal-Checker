@@ -13,3 +13,21 @@ BotToken=""
 
 client = discord.Client()
 
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
+
+    if message.content.startswith('$edt'):
+        await message.channel.send('Voici ton emploi du temps :')
+        await message.channel.send(file=discord.File('edt.png'))
+
+if __name__ == "__main__":
+    client.run(BotToken)
