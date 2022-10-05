@@ -23,12 +23,16 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+    if message.content.startswith('$next'):
+        download_ical()
+        cal = parse_ical()
+        event = getNextEvent(cal)
+        timeleft = CalcTimeLeft(event)
+        await message.channel.send("Next event is " + event.get('summary') + " in " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m")
+        delete_ical()
 
-    if message.content.startswith('$edt'):
-        await message.channel.send('Voici ton emploi du temps :')
-        await message.channel.send(file=discord.File('edt.png'))
+    if message.content.startswith('$help'):
+        await message.channel.send("Commands : $next, $help")
 
 def download_ical():
     try:
@@ -54,14 +58,6 @@ def getNextEvent(cal):
 def CalcTimeLeft(event):
     timeleft = event.get('dtstart').dt - datetime.datetime.now(pytz.timezone(Timezone))
     return timeleft
-
-def send_webhook_soon(event):
-    webhook = discord_webhook.DiscordWebhook(url=WebhookUrl, content="Le prochain cours : " + event.get('summary') + ", commence dans moins d'une heure !")
-    response = webhook.execute()
-
-def send_webhook_nothing(event, timeleft):
-    webhook = discord_webhook.DiscordWebhook(url=WebhookUrl, content=f"Il n'y a pas de cours dans les prochaines heures.\nProchain évenement : {event.get('summary')} dans {getHours(timeleft)} heures et {getMinutes(timeleft)} minutes.")
-    response = webhook.execute()
 
 def delete_ical():
     os.remove("calendar.ics")
