@@ -26,20 +26,31 @@ async def on_message(message):
         cal = parse_ical()
         event = getNextEvent(cal)
         timeleft = CalcTimeLeft(event)
-        await message.channel.send("Le prochain évenement est " + event.get('summary') + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m")
+        if isMoreThanDay(timeleft):
+            await message.channel.send("Prochain cours dans plus d'un jour : " + getTitle(event.get('summary')))
+        else:
+            await message.channel.send("Le prochain évenement est " + event.get('summary') + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m")
 
     if message.content.startswith('$help'):
         await message.channel.send("Commands : $next, $help")
 
 async def my_background_task():
     await client.wait_until_ready()
+    count=0
     while not client.is_closed():
-        download_ical()
+        if count == 30:
+            download_ical()
+            count=0
+        else:
+            count=count+1
         cal=parse_ical()
         event=getNextEvent(cal)
         timeleft=CalcTimeLeft(event)
         print("Reload status")
-        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
+        if isMoreThanDay(timeleft):
+            await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=getTitle(event.get('summary')) + " dans plus d'un jour"))
+        else:
+            await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
         await asyncio.sleep(60)
 
 client.loop.create_task(my_background_task())
@@ -67,6 +78,10 @@ def getNextEvent(cal):
 
 def CalcTimeLeft(event):
     timeleft = event.get('dtstart').dt - datetime.datetime.now(pytz.timezone(Timezone))
+    if getHours(timeleft) < 0:
+        return 0
+    elif getHours(timeleft) > 4:
+        return datetime.timedelta(hours=0,minutes=0)
     return timeleft
 
 def delete_ical():
@@ -80,6 +95,9 @@ def getHours(timeleft):
 
 def getTitle(event):
     return event.split(" - ")[0]
+
+def isMoreThanDay(timeleft):
+    return timeleft.days > 0
 
 if __name__ == "__main__":
     client.run(BotToken)
