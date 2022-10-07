@@ -10,6 +10,7 @@ import asyncio
 CalUrl="https://hp22.ynov.com/BOR/Telechargements/ical/Edt_BONNELL.ics?version=2022.0.3.1&idICal=BB1309C5D04314FC29CBCE40092D7C09&param=643d5b312e2e36325d2666683d3126663d31"
 BotToken="MTAyNzIxOTY0MjY0NjgwNjYzOA.GWN6_v.YQYWI78QIsfPD9ljgjBcBcRqKLfuRRzh2vvuec"
 Timezone="Europe/Paris"
+AdminId="461807010086780930"
 
 client = discord.Client()
 
@@ -34,6 +35,10 @@ async def on_message(message):
     if message.content.startswith('$help'):
         await message.channel.send("Commands : $next, $help")
 
+    if message.content.startswith('$update') and message.author.id == AdminId:
+        download_ical()
+        await message.channel.send("Calendar updated")
+
 async def my_background_task():
     await client.wait_until_ready()
     count=0
@@ -48,10 +53,14 @@ async def my_background_task():
         event=getNextEvent(cal)
         timeleft=CalcTimeLeft(event)
         print("Reload status")
+        # if isMoreThanDay(timeleft):
+        #     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=getTitle(event.get('summary')) + " dans plus d'un jour"))
+        # else:
+        #     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
         if isMoreThanDay(timeleft):
-            await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=getTitle(event.get('summary')) + " dans plus d'un jour"))
+            await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans plus d'un jour"))
         else:
-            await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
+            await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
         await asyncio.sleep(60)
 
 client.loop.create_task(my_background_task())
@@ -81,8 +90,8 @@ def CalcTimeLeft(event):
     timeleft = event.get('dtstart').dt - datetime.datetime.now(pytz.timezone(Timezone))
     if getHours(timeleft) < 0:
         return 0
-    elif getHours(timeleft) > 4:
-        return datetime.timedelta(hours=0,minutes=0)
+    # elif getHours(timeleft) > 4:
+    #     return datetime.timedelta(hours=0,minutes=0)
     return timeleft
 
 def delete_ical():
