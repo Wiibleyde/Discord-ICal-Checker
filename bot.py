@@ -7,9 +7,10 @@ import datetime
 import pytz
 import sys
 import os
+import asyncio
 
 CalUrl="https://hp22.ynov.com/BOR/Telechargements/ical/Edt_BONNELL.ics?version=2022.0.3.1&idICal=BB1309C5D04314FC29CBCE40092D7C09&param=643d5b312e2e36325d2666683d3126663d31"
-BotToken=""
+BotToken="MTAyNzIxOTY0MjY0NjgwNjYzOA.GWN6_v.YQYWI78QIsfPD9ljgjBcBcRqKLfuRRzh2vvuec"
 Timezone="Europe/Paris"
 
 client = discord.Client()
@@ -24,15 +25,26 @@ async def on_message(message):
         return
 
     if message.content.startswith('$next'):
-        download_ical()
         cal = parse_ical()
         event = getNextEvent(cal)
         timeleft = CalcTimeLeft(event)
         await message.channel.send("Next event is " + event.get('summary') + " in " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m")
-        delete_ical()
 
     if message.content.startswith('$help'):
         await message.channel.send("Commands : $next, $help")
+
+async def my_background_task():
+    await client.wait_until_ready()
+    while not client.is_closed():
+        download_ical()
+        cal=parse_ical()
+        event=getNextEvent(cal)
+        timeleft=CalcTimeLeft(event)
+        print("Reload status")
+        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=event.get('summary') + " in " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
+        await asyncio.sleep(60)
+
+client.loop.create_task(my_background_task())
 
 def download_ical():
     try:
