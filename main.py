@@ -53,10 +53,6 @@ async def my_background_task():
         event=getNextEvent(cal)
         timeleft=CalcTimeLeft(event)
         print("Reload status")
-        # if isMoreThanDay(timeleft):
-        #     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=getTitle(event.get('summary')) + " dans plus d'un jour"))
-        # else:
-        #     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
         if isMoreThanDay(timeleft):
             await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans plus d'un jour"))
         else:
@@ -90,8 +86,6 @@ def CalcTimeLeft(event):
     timeleft = event.get('dtstart').dt - datetime.datetime.now(pytz.timezone(Timezone))
     if getHours(timeleft) < 0:
         return 0
-    # elif getHours(timeleft) > 4:
-    #     return datetime.timedelta(hours=0,minutes=0)
     return timeleft
 
 def delete_ical():
