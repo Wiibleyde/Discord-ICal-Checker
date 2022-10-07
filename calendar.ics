@@ -1,0 +1,741 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID;LANGUAGE=fr:Copyright Index-Education - HYPERPLANNING 2022
+METHOD:PUBLISH
+X-CALSTART:20220829T000000Z
+X-CALEND:20221023T000000Z
+X-WR-CALNAME;LANGUAGE=fr:HYP - BONNELL Nathan 01/11/2004 (Bordeaux | INFO B1 B) - du 29 août au 23 octobre 2022
+X-WR-CALDESC;LANGUAGE=fr:Emploi du temps de BONNELL Nathan 01/11/2004 généré par le logiciel HP (©INDEX ÉDUCATION) le 07 oct. 2022 - BORDEAUX YNOV CAMPUS - valable sur la période du 29 août au 23 octobre 2022 - Semaines : semaine 35 - 42
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-70-2-BONNELL_Nathan-Index-Education
+DTSTART:20220905T070000Z
+DTEND:20220905T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Explication : qu'est ce que l'informatique ? / Icebreaker : Qui est-ce ? (Profil Malt) / Présentation de l'intérêt des softskills
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Explication : qu'est ce que l'informatique ? / Icebreaker : Qui est-ce ? (Profil Malt) / Présentation de l'intérêt des softskills\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Explication : qu'est ce que l'informatique ? / Icebreaker : Qui est-ce ? (Profil Malt) / Présentation de l'intérêt des softskills<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-71-2-BONNELL_Nathan-Index-Education
+DTSTART:20220905T120000Z
+DTEND:20220905T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Base de Linux / Setup sous système Ubuntu-Windows / Commandes de base de Linux / TP Navigation Shell linux
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Base de Linux / Setup sous système Ubuntu-Windows / Commandes de base de Linux / TP Navigation Shell linux\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Base de Linux / Setup sous système Ubuntu-Windows / Commandes de base de Linux / TP Navigation Shell linux<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-93-3-BONNELL_Nathan-Index-Education
+DTSTART:20220913T070000Z
+DTEND:20220913T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point suivi  / Robotique
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point suivi  / Robotique\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point suivi  / Robotique<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-94-2-BONNELL_Nathan-Index-Education
+DTSTART:20220906T070000Z
+DTEND:20220906T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Premier lancement de Ytrack + Inscription / Qu'est ce que Git ? / Pourquoi on l'utilise ? / Commende de bas de Git + Tp mise en application
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Premier lancement de Ytrack + Inscription / Qu'est ce que Git ? / Pourquoi on l'utilise ? / Commende de bas de Git + Tp mise en application\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Premier lancement de Ytrack + Inscription / Qu'est ce que Git ? / Pourquoi on l'utilise ? / Commende de bas de Git + Tp mise en application<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-95-3-BONNELL_Nathan-Index-Education
+DTSTART:20220913T120000Z
+DTEND:20220913T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Intervention spécialité campus / Robotique / Activité détente
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Intervention spécialité campus / Robotique / Activité détente\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Intervention spécialité campus / Robotique / Activité détente<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-96-2-BONNELL_Nathan-Index-Education
+DTSTART:20220906T120000Z
+DTEND:20220906T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Suite Initiation Git / Qu'est ce qu'un code ? Explication des bases : ypage\, variable\, algo\,...
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Suite Initiation Git / Qu'est ce qu'un code ? Explication des bases : ypage\, variable\, algo\,...\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Suite Initiation Git / Qu'est ce qu'un code ? Explication des bases : ypage\, variable\, algo\,...<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-158-3-BONNELL_Nathan-Index-Education
+DTSTART:20220914T070000Z
+DTEND:20220914T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi / Infra (Tp d&d Linux)
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi / Infra (Tp d&d Linux)\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi / Infra (Tp d&d Linux)<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-159-2-BONNELL_Nathan-Index-Education
+DTSTART:20220907T070000Z
+DTEND:20220907T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point suivi / Quête 2
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point suivi / Quête 2\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point suivi / Quête 2<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-161-3-BONNELL_Nathan-Index-Education
+DTSTART:20220914T120000Z
+DTEND:20220914T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Infra (tp d&d Linux)
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Infra (tp d&d Linux)\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Infra (tp d&d Linux)<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-162-2-BONNELL_Nathan-Index-Education
+DTSTART:20220907T120000Z
+DTEND:20220907T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Quête 2
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Quête 2\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Quête 2<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-163-3-BONNELL_Nathan-Index-Education
+DTSTART:20220915T070000Z
+DTEND:20220915T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi / quête 5
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi / quête 5\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi / quête 5<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-164-2-BONNELL_Nathan-Index-Education
+DTSTART:20220908T070000Z
+DTEND:20220908T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point suivi / Quête 3
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point suivi / Quête 3\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point suivi / Quête 3<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-165-3-BONNELL_Nathan-Index-Education
+DTSTART:20220915T120000Z
+DTEND:20220915T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Quête 5 / Activité détente
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Quête 5 / Activité détente\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Quête 5 / Activité détente<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-166-2-BONNELL_Nathan-Index-Education
+DTSTART:20220908T120000Z
+DTEND:20220908T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Quête 3 / Activité détente
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Quête 3 / Activité détente\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Quête 3 / Activité détente<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-245-3-BONNELL_Nathan-Index-Education
+DTSTART:20220916T070000Z
+DTEND:20220916T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Exam 2 (Quête 4 et 5)
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Exam 2 (Quête 4 et 5)\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Exam 2 (Quête 4 et 5)<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-246-2-BONNELL_Nathan-Index-Education
+DTSTART:20220909T070000Z
+DTEND:20220909T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Exam 1 (Quête 2 et 3)
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Exam 1 (Quête 2 et 3)\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Exam 1 (Quête 2 et 3)<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-249-3-BONNELL_Nathan-Index-Education
+DTSTART:20220916T120000Z
+DTEND:20220916T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Rétrospective de la semaine / Quête 6
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Rétrospective de la semaine / Quête 6\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Rétrospective de la semaine / Quête 6<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-250-2-BONNELL_Nathan-Index-Education
+DTSTART:20220909T120000Z
+DTEND:20220909T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Rétrospective de la semaine / Création des groupes Raid 1 / Début du Raid 1
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Rétrospective de la semaine / Création des groupes Raid 1 / Début du Raid 1\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Rétrospective de la semaine / Création des groupes Raid 1 / Début du Raid 1<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-271-4-BONNELL_Nathan-Index-Education
+DTSTART:20220919T070000Z
+DTEND:20220919T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi / Quête 6
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi / Quête 6\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi / Quête 6<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-272-3-BONNELL_Nathan-Index-Education
+DTSTART:20220912T070000Z
+DTEND:20220912T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point suivi / Quête 4 / Soutenance Raid 1
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point suivi / Quête 4 / Soutenance Raid 1\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point suivi / Quête 4 / Soutenance Raid 1<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-273-4-BONNELL_Nathan-Index-Education
+DTSTART:20220919T120000Z
+DTEND:20220919T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Quête 7
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Quête 7\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Quête 7<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-274-3-BONNELL_Nathan-Index-Education
+DTSTART:20220912T120000Z
+DTEND:20220912T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point suivi / Quête 4 / Soutenance Raid 1
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point suivi / Quête 4 / Soutenance Raid 1\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point suivi / Quête 4 / Soutenance Raid 1<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-275-4-BONNELL_Nathan-Index-Education
+DTSTART:20220920T070000Z
+DTEND:20220920T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi / Quête 7
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi / Quête 7\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi / Quête 7<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-276-4-BONNELL_Nathan-Index-Education
+DTSTART:20220920T120000Z
+DTEND:20220920T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - QCM Golang / Atelier Gestion de projet (Github Project\, Pull Request\, Branch\, Trello\,...)
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : QCM Golang / Atelier Gestion de projet (Github Project\, Pull Request\, Branch\, Trello\,...)\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : QCM Golang / Atelier Gestion de projet (Github Project\, Pull Request\, Branch\, Trello\,...)<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-277-4-BONNELL_Nathan-Index-Education
+DTSTART:20220921T070000Z
+DTEND:20220921T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi / Explication : Qu'est ce que le réseau ? + Tp réseau
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi / Explication : Qu'est ce que le réseau ? + Tp réseau\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi / Explication : Qu'est ce que le réseau ? + Tp réseau<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-278-4-BONNELL_Nathan-Index-Education
+DTSTART:20220921T120000Z
+DTEND:20220921T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Explication : Qu'est ce que le réseau + TP réseau / Initiation Cyber
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Explication : Qu'est ce que le réseau + TP réseau / Initiation Cyber\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Explication : Qu'est ce que le réseau + TP réseau / Initiation Cyber<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-279-4-BONNELL_Nathan-Index-Education
+DTSTART:20220922T070000Z
+DTEND:20220922T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi / Atelier Robotique : Mécatronique
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi / Atelier Robotique : Mécatronique\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi / Atelier Robotique : Mécatronique<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-280-4-BONNELL_Nathan-Index-Education
+DTSTART:20220922T120000Z
+DTEND:20220922T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Atelier Robotique : Mécatronique / Activité détente
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Atelier Robotique : Mécatronique / Activité détente\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Atelier Robotique : Mécatronique / Activité détente<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-281-4-BONNELL_Nathan-Index-Education
+DTSTART:20220923T070000Z
+DTEND:20220923T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Exam 3 (Quête 6 et 7)
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Exam 3 (Quête 6 et 7)\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Exam 3 (Quête 6 et 7)<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-282-4-BONNELL_Nathan-Index-Education
+DTSTART:20220923T120000Z
+DTEND:20220923T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Rétrospective de la semaine / Création des groupes pour le raid 2 / Lancement du raid 2
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Rétrospective de la semaine / Création des groupes pour le raid 2 / Lancement du raid 2\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Rétrospective de la semaine / Création des groupes pour le raid 2 / Lancement du raid 2<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-283-5-BONNELL_Nathan-Index-Education
+DTSTART:20220926T070000Z
+DTEND:20220926T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi / Quête 9 / Soutenance Raid 2
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi / Quête 9 / Soutenance Raid 2\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi / Quête 9 / Soutenance Raid 2<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-284-5-BONNELL_Nathan-Index-Education
+DTSTART:20220926T120000Z
+DTEND:20220926T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi / Quête 9 / Soutenance Raid 2
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi / Quête 9 / Soutenance Raid 2\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi / Quête 9 / Soutenance Raid 2<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-285-5-BONNELL_Nathan-Index-Education
+DTSTART:20220927T070000Z
+DTEND:20220927T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi / Quête 9 (+10 en bonus)
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi / Quête 9 (+10 en bonus)\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi / Quête 9 (+10 en bonus)<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-288-5-BONNELL_Nathan-Index-Education
+DTSTART:20220927T120000Z
+DTEND:20220927T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Quête 9 (+10 en bonus)
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Quête 9 (+10 en bonus)\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Quête 9 (+10 en bonus)<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-289-5-BONNELL_Nathan-Index-Education
+DTSTART:20220928T070000Z
+DTEND:20220928T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Point de suivi Quête 9 (+10 et 11 en bonus)
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Point de suivi Quête 9 (+10 et 11 en bonus)\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Point de suivi Quête 9 (+10 et 11 en bonus)<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-291-5-BONNELL_Nathan-Index-Education
+DTSTART:20220928T120000Z
+DTEND:20220928T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Quête 9 (+10 et 11 en bonus) / Activité détente
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Quête 9 (+10 et 11 en bonus) / Activité détente\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Quête 9 (+10 et 11 en bonus) / Activité détente<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-292-5-BONNELL_Nathan-Index-Education
+DTSTART:20220929T070000Z
+DTEND:20220929T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Exo pratiques
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Exo pratiques\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Exo pratiques<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-293-5-BONNELL_Nathan-Index-Education
+DTSTART:20220929T120000Z
+DTEND:20220929T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Atelier de travail en préparation au final exam / Capsules de cours pour les plus en difficultés
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Atelier de travail en préparation au final exam / Capsules de cours pour les plus en difficultés\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Atelier de travail en préparation au final exam / Capsules de cours pour les plus en difficultés<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-294-5-BONNELL_Nathan-Index-Education
+DTSTART:20220930T070000Z
+DTEND:20220930T110000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Final exam
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Final exam\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Final exam<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220830T081009Z
+UID:Cours-295-5-BONNELL_Nathan-Index-Education
+DTSTART:20220930T120000Z
+DTEND:20220930T160000Z
+SUMMARY;LANGUAGE=fr:Ymmersion Info - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C - Rétrospective de tout le parcours / Awards Promo / Wooclap de satisfaction
+LOCATION;LANGUAGE=fr:CONDE 301\, CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Ymmersion Info\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalles : CONDE 301\, CONDE 303 / 304\nMémo : Rétrospective de tout le parcours / Awards Promo / Wooclap de satisfaction\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ymmersion Info<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salles : CONDE 301\, CONDE 303 / 304<br/>Mémo : Rétrospective de tout le parcours / Awards Promo / Wooclap de satisfaction<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220926T095059Z
+UID:Cours-4259-6-BONNELL_Nathan-Index-Education
+DTSTART:20221005T120000Z
+DTEND:20221005T160000Z
+SUMMARY;LANGUAGE=fr:Fonct. réseaux - Monsieur GODEFROY - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CONDE 207
+DESCRIPTION;LANGUAGE=fr:Matière : Fonct. réseaux\nIntervenant : Monsieur GODEFROY\nPromotion : Bordeaux | INFO B1 B\nSalle : CONDE 207\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Fonct. réseaux<br/>Intervenant : Monsieur GODEFROY<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CONDE 207<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20221004T175359Z
+UID:Cours-4303-7-BONNELL_Nathan-Index-Education
+DTSTART:20221014T120000Z
+DTEND:20221014T160000Z
+SUMMARY;LANGUAGE=fr:Administration Poste Client - Monsieur DREYFUS - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Administration Poste Client\nIntervenant : Monsieur DREYFUS\nPromotion : Bordeaux | INFO B1 B\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Administration Poste Client<br/>Intervenant : Monsieur DREYFUS<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20221004T175355Z
+UID:Cours-4304-7-BONNELL_Nathan-Index-Education
+DTSTART:20221014T070000Z
+DTEND:20221014T110000Z
+SUMMARY;LANGUAGE=fr:Administration Poste Client - Monsieur DREYFUS - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Administration Poste Client\nIntervenant : Monsieur DREYFUS\nPromotion : Bordeaux | INFO B1 B\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Administration Poste Client<br/>Intervenant : Monsieur DREYFUS<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20221004T175212Z
+UID:Cours-4306-6-BONNELL_Nathan-Index-Education
+DTSTART:20221005T070000Z
+DTEND:20221005T110000Z
+SUMMARY;LANGUAGE=fr:Administration Poste Client - Monsieur DREYFUS - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CHARTRONS Galerie 5
+DESCRIPTION;LANGUAGE=fr:Matière : Administration Poste Client\nIntervenant : Monsieur DREYFUS\nPromotion : Bordeaux | INFO B1 B\nSalle : CHARTRONS Galerie 5\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Administration Poste Client<br/>Intervenant : Monsieur DREYFUS<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CHARTRONS Galerie 5<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-6754-8-BONNELL_Nathan-Index-Education
+DTSTART:20221020T120000Z
+DTEND:20221020T160000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-6755-7-BONNELL_Nathan-Index-Education
+DTSTART:20221012T120000Z
+DTEND:20221012T160000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur FEYDIT\, Monsieur MICHON\, Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur FEYDIT\, Monsieur MICHON\, Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur FEYDIT\, Monsieur MICHON\, Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-6756-8-BONNELL_Nathan-Index-Education
+DTSTART:20221018T120000Z
+DTEND:20221018T160000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur FEYDIT\, Monsieur MICHON - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur FEYDIT\, Monsieur MICHON\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur FEYDIT\, Monsieur MICHON<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-6757-8-BONNELL_Nathan-Index-Education
+DTSTART:20221021T120000Z
+DTEND:20221021T160000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-6760-8-BONNELL_Nathan-Index-Education
+DTSTART:20221021T070000Z
+DTEND:20221021T110000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-6761-8-BONNELL_Nathan-Index-Education
+DTSTART:20221018T070000Z
+DTEND:20221018T110000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur FEYDIT\, Monsieur MICHON - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur FEYDIT\, Monsieur MICHON\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur FEYDIT\, Monsieur MICHON<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220926T095059Z
+UID:Cours-6762-6-BONNELL_Nathan-Index-Education
+DTSTART:20221003T120000Z
+DTEND:20221003T160000Z
+SUMMARY;LANGUAGE=fr:Fonct. réseaux - Monsieur GODEFROY - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CONDE 207
+DESCRIPTION;LANGUAGE=fr:Matière : Fonct. réseaux\nIntervenant : Monsieur GODEFROY\nPromotion : Bordeaux | INFO B1 B\nSalle : CONDE 207\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Fonct. réseaux<br/>Intervenant : Monsieur GODEFROY<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CONDE 207<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220926T095059Z
+UID:Cours-6763-6-BONNELL_Nathan-Index-Education
+DTSTART:20221004T120000Z
+DTEND:20221004T160000Z
+SUMMARY;LANGUAGE=fr:Fonct. réseaux - Monsieur GODEFROY - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CONDE 207
+DESCRIPTION;LANGUAGE=fr:Matière : Fonct. réseaux\nIntervenant : Monsieur GODEFROY\nPromotion : Bordeaux | INFO B1 B\nSalle : CONDE 207\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Fonct. réseaux<br/>Intervenant : Monsieur GODEFROY<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CONDE 207<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220926T095201Z
+UID:Cours-6766-7-BONNELL_Nathan-Index-Education
+DTSTART:20221011T120000Z
+DTEND:20221011T160000Z
+SUMMARY;LANGUAGE=fr:Fonct. réseaux - Monsieur GODEFROY - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CONDE 207
+DESCRIPTION;LANGUAGE=fr:Matière : Fonct. réseaux\nIntervenant : Monsieur GODEFROY\nPromotion : Bordeaux | INFO B1 B\nSalle : CONDE 207\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Fonct. réseaux<br/>Intervenant : Monsieur GODEFROY<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CONDE 207<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-6767-8-BONNELL_Nathan-Index-Education
+DTSTART:20221020T070000Z
+DTEND:20221020T110000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-6768-7-BONNELL_Nathan-Index-Education
+DTSTART:20221012T070000Z
+DTEND:20221012T110000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur FEYDIT\, Monsieur MICHON\, Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur FEYDIT\, Monsieur MICHON\, Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur FEYDIT\, Monsieur MICHON\, Monsieur MOURGUES\, Monsieur REYPE\, Monsieur TARENDEAU<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-6771-8-BONNELL_Nathan-Index-Education
+DTSTART:20221017T070000Z
+DTEND:20221017T110000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur FEYDIT\, Monsieur MICHON - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur FEYDIT\, Monsieur MICHON\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur FEYDIT\, Monsieur MICHON<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220915T082749Z
+UID:Cours-8490-8-BONNELL_Nathan-Index-Education
+DTSTART:20221017T120000Z
+DTEND:20221017T160000Z
+SUMMARY;LANGUAGE=fr:Hangman - Monsieur FEYDIT\, Monsieur MICHON - Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C
+LOCATION;LANGUAGE=fr:CONDE 303 / 304
+DESCRIPTION;LANGUAGE=fr:Matière : Hangman\nIntervenants : Monsieur FEYDIT\, Monsieur MICHON\nPromotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C\nSalle : CONDE 303 / 304\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Hangman<br/>Intervenants : Monsieur FEYDIT\, Monsieur MICHON<br/>Promotions : Bordeaux | INFO B1 A\, Bordeaux | INFO B1 B\, Bordeaux | INFO B1 C<br/>Salle : CONDE 303 / 304<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220926T095201Z
+UID:Cours-8536-7-BONNELL_Nathan-Index-Education
+DTSTART:20221010T120000Z
+DTEND:20221010T160000Z
+SUMMARY;LANGUAGE=fr:Fonct. réseaux - Monsieur GODEFROY - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CONDE 207
+DESCRIPTION;LANGUAGE=fr:Matière : Fonct. réseaux\nIntervenant : Monsieur GODEFROY\nPromotion : Bordeaux | INFO B1 B\nSalle : CONDE 207\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Fonct. réseaux<br/>Intervenant : Monsieur GODEFROY<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CONDE 207<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220926T095059Z
+UID:Cours-8550-6-BONNELL_Nathan-Index-Education
+DTSTART:20221006T120000Z
+DTEND:20221006T160000Z
+SUMMARY;LANGUAGE=fr:Fonct. réseaux - Monsieur GODEFROY - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CONDE 207
+DESCRIPTION;LANGUAGE=fr:Matière : Fonct. réseaux\nIntervenant : Monsieur GODEFROY\nPromotion : Bordeaux | INFO B1 B\nSalle : CONDE 207\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Fonct. réseaux<br/>Intervenant : Monsieur GODEFROY<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CONDE 207<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20220928T135355Z
+UID:Cours-8660-7-BONNELL_Nathan-Index-Education
+DTSTART:20221013T120000Z
+DTEND:20221013T160000Z
+SUMMARY;LANGUAGE=fr:Fonct. réseaux - Monsieur GODEFROY - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CONDE 207
+DESCRIPTION;LANGUAGE=fr:Matière : Fonct. réseaux\nIntervenant : Monsieur GODEFROY\nPromotion : Bordeaux | INFO B1 B\nSalle : CONDE 207\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Fonct. réseaux<br/>Intervenant : Monsieur GODEFROY<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CONDE 207<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20221007T115558Z
+LAST-MODIFIED:20221004T175340Z
+UID:Cours-10022-6-BONNELL_Nathan-Index-Education
+DTSTART:20221007T120000Z
+DTEND:20221007T160000Z
+SUMMARY;LANGUAGE=fr:Administration Poste Client - Monsieur DREYFUS - Bordeaux | INFO B1 B
+LOCATION;LANGUAGE=fr:CHARTRONS B2
+DESCRIPTION;LANGUAGE=fr:Matière : Administration Poste Client\nIntervenant : Monsieur DREYFUS\nPromotion : Bordeaux | INFO B1 B\nSalle : CHARTRONS B2\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Administration Poste Client<br/>Intervenant : Monsieur DREYFUS<br/>Promotion : Bordeaux | INFO B1 B<br/>Salle : CHARTRONS B2<br/>
+END:VEVENT
+END:VCALENDAR
