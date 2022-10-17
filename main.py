@@ -80,14 +80,7 @@ def parse_ical():
         sys.exit(1)
 
 def getNextEvent(cal):
-    nextEventDate=datetime.datetime.now(pytz.timezone(Timezone))+datetime.timedelta(days=365)
-    for event in cal.walk('vevent'):
-        # stderr(event.get('summary')+ " : " + str(getEventDate(event).strftime("%d/%m/%Y %H:%M:%S")))
-        eventdate = getEventDate(event)
-        if eventdate > datetime.datetime.now(pytz.timezone(Timezone)) and eventdate < nextEventDate:
-            nextEventDate=eventdate
-            nextEvent=event
-    return nextEvent
+
 
 def stderr(message):
     sys.stderr.write(message)
@@ -124,6 +117,12 @@ def getTitle(event):
 
 def isMoreThanDay(timeleft):
     return getHours(timeleft) > 24
+
+def InEvent(cal):
+    for event in cal.walk('vevent'):
+        if getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) + datetime.timedelta(hours=2) > datetime.datetime.now(pytz.timezone(Timezone)):
+            return True
+    return False
 
 if __name__ == "__main__":
     delete_ical()
