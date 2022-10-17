@@ -29,7 +29,7 @@ async def on_message(message):
         timeleft = CalcTimeLeft(event)
         embed = discord.Embed(title="Prochain cours", description=getTitle(event.get('summary')), color=0x00ff00)
         if isMoreThanDay(timeleft):
-            embed.add_field(name="Dans plus d'un jour", inline=False)
+            embed.add_field(name="Dans plus d'un jour", value=getEventDate(event).strftime("%d/%m %H:%M"), inline=False)
             await message.channel.send(embed=embed)
         else:
             # add 2 hours to timeleft
