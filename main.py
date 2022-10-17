@@ -29,7 +29,7 @@ async def on_message(message):
         timeleft = CalcTimeLeft(event)
         embed = discord.Embed(title="Prochain cours", description=getTitle(event.get('summary')), color=0x00ff00)
         if isMoreThanDay(timeleft):
-            embed.add_field(name="Dans plus d'un jour", value=getEventDate(event).strftime("%d/%m %H:%M"), inline=False)
+            embed.add_field(name="Dans plus d'un jour", inline=False)
             await message.channel.send(embed=embed)
         else:
             # add 2 hours to timeleft
@@ -99,9 +99,13 @@ def parse_ical():
         sys.exit(1)
 
 def getNextEvent(cal):
+    nextEventDate=datetime.datetime.now(pytz.timezone(Timezone))+datetime.timedelta(days=365)
     for event in cal.walk('vevent'):
-        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)):
-            return event
+        eventdate = getEventDate(event)
+        if eventdate > datetime.datetime.now(pytz.timezone(Timezone)) and eventdate < nextEventDate:
+            nextEventDate=eventdate
+            nextEvent=event
+    return nextEvent
 
 def stderr(message):
     print(message)
@@ -158,12 +162,6 @@ def sortEvents(cal):
     for event in cal.walk('vevent'):
         events.append(event)
     return sorted(events, key=lambda event: getEventDate(event))
-
-def InEvent(cal):
-    for event in cal.walk('vevent'):
-        if getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) + datetime.timedelta(hours=2) > datetime.datetime.now(pytz.timezone(Timezone)):
-            return True
-    return False
 
 if __name__ == "__main__":
     delete_ical()
