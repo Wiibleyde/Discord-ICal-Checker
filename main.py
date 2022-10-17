@@ -98,20 +98,17 @@ def parse_ical():
         stderr("Error parsing calendar")
         sys.exit(1)
 
+def getEventDate(event):
+    return event.get('dtstart').dt.astimezone(pytz.timezone(Timezone))
+
 def getNextEvent(cal):
-    nextEventDate=datetime.datetime.now(pytz.timezone(Timezone))+datetime.timedelta(days=365)
-    for event in cal.walk('vevent'):
-        eventdate = getEventDate(event)
-        if eventdate > datetime.datetime.now(pytz.timezone(Timezone)) and eventdate < nextEventDate:
-            nextEventDate=eventdate
-            nextEvent=event
-    return nextEvent
+    events = getAllEvents(cal)
+    for event in events:
+        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)):
+            return event
 
 def stderr(message):
     print(message)
-
-def getEventDate(event):
-    return event.get('dtstart').dt
 
 def getAllEvents(cal):
     events = []
