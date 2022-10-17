@@ -27,17 +27,36 @@ async def on_message(message):
         cal = parse_ical()
         event = getNextEvent(cal)
         timeleft = CalcTimeLeft(event)
+        embed = discord.Embed(title="Prochain cours", description=getTitle(event.get('summary')), color=0x00ff00)
         if isMoreThanDay(timeleft):
-            await message.channel.send("Prochain cours dans plus d'un jour : " + getTitle(event.get('summary')))
+            embed.add_field(name="Dans plus d'un jour", inline=False)
+            await message.channel.send(embed=embed)
         else:
-            await message.channel.send("Le prochain évenement est " + event.get('summary') + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m")
+            # add 2 hours to timeleft
+            eventdate = getEventDate(event) + datetime.timedelta(hours=2)
+            eventdate = eventdate.strftime("%d/%m %H:%M")
+            embed.add_field(name="Dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m", value=eventdate, inline=False)
+            await message.channel.send(embed=embed)
 
     if message.content.startswith('$help'):
-        await message.channel.send("Commands : $next, $help")
+        embed = discord.Embed(title="Help", description="Liste des commandes" + "\n- $next : Get next event in the given calendar" + "\n- $week : Get event of the current week in the given calendar", color=0xeee657)
+        await message.channel.send(embed=embed)
 
     if message.content.startswith('$update') and message.author.id == AdminId:
+        delete_ical()
         download_ical()
         await message.channel.send("Calendar updated")
+    
+    if message.content.startswith('$week'):
+        cal = parse_ical()
+        WeekEvents = getEventsWeek(cal)
+        embed = discord.Embed(title="Cours de la semaine", description="Liste des cours de la semaine", color=0x00ff00)
+        for event in WeekEvents:
+            timeleft = CalcTimeLeft(event)
+            eventdate = getEventDate(event) + datetime.timedelta(hours=2)
+            eventdate = eventdate.strftime("%d/%m %H:%M")
+            embed.add_field(name=getTitle(event.get('summary')), value=eventdate, inline=False)
+        await message.channel.send(embed=embed)
 
 async def my_background_task():
     await client.wait_until_ready()
@@ -85,7 +104,7 @@ def getNextEvent(cal):
             return event
 
 def stderr(message):
-    sys.stderr.write(message)
+    print(message)
 
 def getEventDate(event):
     return event.get('dtstart').dt
@@ -118,7 +137,27 @@ def getTitle(event):
     return event.split(" - ")[0]
 
 def isMoreThanDay(timeleft):
-    return getHours(timeleft) > 24
+    return timeleft.days > 0
+
+def InEvent(cal):
+    for event in cal.walk('vevent'):
+        if getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) + datetime.timedelta(minutes=30) > datetime.datetime.now(pytz.timezone(Timezone)):
+            return True
+    return False
+
+def getEventsWeek(cal):
+    events = []
+    sorted_events = sorted(cal.walk('vevent'), key=lambda event: getEventDate(event))
+    for event in sorted_events:
+        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=7):
+            events.append(event)
+    return events
+
+def sortEvents(cal):
+    events = []
+    for event in cal.walk('vevent'):
+        events.append(event)
+    return sorted(events, key=lambda event: getEventDate(event))
 
 def InEvent(cal):
     for event in cal.walk('vevent'):
