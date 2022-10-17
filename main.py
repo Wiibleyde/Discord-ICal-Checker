@@ -80,7 +80,9 @@ def parse_ical():
         sys.exit(1)
 
 def getNextEvent(cal):
-
+    for event in cal.walk('vevent'):
+        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)):
+            return event
 
 def stderr(message):
     sys.stderr.write(message)
