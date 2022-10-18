@@ -29,7 +29,7 @@ async def on_message(message):
         timeleft = CalcTimeLeft(event)
         embed = discord.Embed(title="Prochain cours", description=getTitle(event.get('summary')), color=0x00ff00)
         if isMoreThanDay(timeleft):
-            embed.add_field(name="Dans plus d'un jour", inline=False)
+            embed.add_field(name="Dans", value=str(timeleft.days) + " jours", inline=False)
             await message.channel.send(embed=embed)
         else:
             # add 2 hours to timeleft
@@ -54,7 +54,10 @@ async def on_message(message):
         for event in WeekEvents:
             timeleft = CalcTimeLeft(event)
             eventdate = getEventDate(event) + datetime.timedelta(hours=2)
-            eventdate = eventdate.strftime("%d/%m %H:%M")
+            if eventdate.strftime("%H:%M") == "00:00":
+                eventdate = eventdate.strftime("%d/%m")
+            else:
+                eventdate = eventdate.strftime("%d/%m %H:%M")
             embed.add_field(name=getTitle(event.get('summary')), value=eventdate, inline=False)
         await message.channel.send(embed=embed)
 
@@ -99,12 +102,14 @@ def parse_ical():
         sys.exit(1)
 
 def getEventDate(event):
-    return event.get('dtstart').dt.astimezone(pytz.timezone(Timezone))
+    if type(event.get('dtstart').dt) is datetime.date:
+        return datetime.datetime.combine(event.get('dtstart').dt, datetime.time(0, 0, 0), tzinfo=pytz.timezone(Timezone))
+    return event.get('dtstart').dt
 
 def getNextEvent(cal):
     events = getAllEvents(cal)
     for event in events:
-        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)):
+        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and not isMoreThanDay(CalcTimeLeft(event)):
             return event
 
 def stderr(message):
@@ -114,7 +119,7 @@ def getAllEvents(cal):
     events = []
     for event in cal.walk('vevent'):
         events.append(event)
-    return events[0]
+    return events
 
 def CalcTimeLeft(event):
     timeleft = event.get('dtstart').dt - datetime.datetime.now(pytz.timezone(Timezone))
@@ -148,7 +153,7 @@ def InEvent(cal):
 
 def getEventsWeek(cal):
     events = []
-    sorted_events = sorted(cal.walk('vevent'), key=lambda event: getEventDate(event))
+    sorted_events = sortEvents(cal)
     for event in sorted_events:
         if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=7):
             events.append(event)
