@@ -108,9 +108,12 @@ def getEventDate(event):
 
 def getNextEvent(cal):
     events = getAllEvents(cal)
-    for event in events:
-        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and not isMoreThanDay(CalcTimeLeft(event)):
+    sorted_events = sorted(events, key=lambda event: getEventDate(event))
+    now=datetime.datetime.now(pytz.timezone(Timezone))
+    for event in sorted_events:
+        if getEventDate(event) > now:
             return event
+            
 
 def stderr(message):
     print(message)
