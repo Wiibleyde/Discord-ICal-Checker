@@ -158,7 +158,20 @@ def getEventsWeek(cal):
     events = []
     sorted_events = sortEvents(cal)
     for event in sorted_events:
-        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=7):
+        print(getTitle(event.get('summary')))
+        if getTitle(event.get('summary')) == "Férié":
+            continue
+        elif getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=7):
+            events.append(event)
+    return events
+
+def getEventsMonth(cal):
+    events = []
+    sorted_events = sortEvents(cal)
+    for event in sorted_events:
+        if getTitle(event.get('summary')) == "Férié":
+            continue
+        elif getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=30):
             events.append(event)
     return events
 
