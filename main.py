@@ -32,7 +32,6 @@ async def on_message(message):
             embed.add_field(name="Dans", value=str(timeleft.days) + " jours", inline=False)
             await message.channel.send(embed=embed)
         else:
-            # add 2 hours to timeleft
             eventdate = getEventDate(event) + datetime.timedelta(hours=2)
             eventdate = eventdate.strftime("%d/%m %H:%M")
             embed.add_field(name="Dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m", value=eventdate, inline=False)
@@ -107,7 +106,6 @@ def getEventDate(event):
     return event.get('dtstart').dt
 
 def getNextEvent(cal):
-    # if event is "Férié", skip it and get next event
     events = getAllEvents(cal)
     sorted_events = sorted(events, key=lambda event: getEventDate(event))
     now=datetime.datetime.now(pytz.timezone(Timezone))
@@ -157,7 +155,6 @@ def InEvent(cal):
     return False
 
 def getEventsWeek(cal):
-    # if event is "Férié", skip it
     events = []
     sorted_events = sortEvents(cal)
     for event in sorted_events:
