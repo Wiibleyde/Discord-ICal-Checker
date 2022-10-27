@@ -107,13 +107,15 @@ def getEventDate(event):
     return event.get('dtstart').dt
 
 def getNextEvent(cal):
+    # if event is "Férié", skip it and get next event
     events = getAllEvents(cal)
     sorted_events = sorted(events, key=lambda event: getEventDate(event))
     now=datetime.datetime.now(pytz.timezone(Timezone))
     for event in sorted_events:
         if getEventDate(event) > now:
+            if getTitle(event.get('summary')) == "Férié":
+                continue
             return event
-            
 
 def stderr(message):
     print(message)
@@ -125,7 +127,7 @@ def getAllEvents(cal):
     return events
 
 def CalcTimeLeft(event):
-    timeleft = event.get('dtstart').dt - datetime.datetime.now(pytz.timezone(Timezone))
+    timeleft=getEventDate(event)-datetime.datetime.now(pytz.timezone(Timezone))
     if getHours(timeleft) < 0:
         return 0
     return timeleft
@@ -155,23 +157,14 @@ def InEvent(cal):
     return False
 
 def getEventsWeek(cal):
+    # if event is "Férié", skip it
     events = []
     sorted_events = sortEvents(cal)
     for event in sorted_events:
         print(getTitle(event.get('summary')))
-        if getTitle(event.get('summary')) == "Férié":
-            continue
-        elif getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=7):
-            events.append(event)
-    return events
-
-def getEventsMonth(cal):
-    events = []
-    sorted_events = sortEvents(cal)
-    for event in sorted_events:
-        if getTitle(event.get('summary')) == "Férié":
-            continue
-        elif getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=30):
+        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=7):
+            if getTitle(event.get('summary')) == "Férié":
+                continue
             events.append(event)
     return events
 
