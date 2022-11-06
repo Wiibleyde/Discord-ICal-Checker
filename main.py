@@ -77,8 +77,10 @@ async def my_background_task():
         stderr("Next event in : " + str(timeleft) + " : " + event.get('summary') + " : " + getEventDate(event).strftime("%d/%m/%Y %H:%M:%S"))
         stderr("Reload status")
         if isMoreThanDay(timeleft):
+            stderr("More than a day")
             await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans plus d'un jour"))
         else:
+            stderr("Less than a day")
             await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
         await asyncio.sleep(60)
 
@@ -103,7 +105,7 @@ def parse_ical():
 def getEventDate(event):
     if type(event.get('dtstart').dt) is datetime.date:
         return datetime.datetime.combine(event.get('dtstart').dt, datetime.time(0, 0, 0), tzinfo=pytz.timezone(Timezone))
-    return event.get('dtstart').dt
+    return event.get('dtstart').dt + datetime.timedelta(hours=-1)
 
 def getNextEvent(cal):
     events = getAllEvents(cal)
@@ -128,7 +130,7 @@ def CalcTimeLeft(event):
     timeleft=getEventDate(event)-datetime.datetime.now(pytz.timezone(Timezone))
     if getHours(timeleft) < 0:
         return 0
-    return timeleft
+    return timeleft + datetime.timedelta(hours=2)
 
 def delete_ical():
     try:
@@ -158,7 +160,6 @@ def getEventsWeek(cal):
     events = []
     sorted_events = sortEvents(cal)
     for event in sorted_events:
-        # print(getTitle(event.get('summary')))
         if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=7):
             if getTitle(event.get('summary')) == "Férié":
                 continue
