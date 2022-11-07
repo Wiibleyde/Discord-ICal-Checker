@@ -32,7 +32,7 @@ async def on_message(message):
             embed.add_field(name="Dans", value=str(timeleft.days) + " jours", inline=False)
             await message.channel.send(embed=embed)
         else:
-            eventdate = getEventDate(event) + datetime.timedelta(hours=2)
+            eventdate = getEventDate(event)
             eventdate = eventdate.strftime("%d/%m %H:%M")
             embed.add_field(name="Dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m", value=eventdate, inline=False)
             await message.channel.send(embed=embed)
@@ -52,11 +52,11 @@ async def on_message(message):
         embed = discord.Embed(title="Cours de la semaine", description="Liste des cours de la semaine", color=0x00ff00)
         for event in WeekEvents:
             timeleft = CalcTimeLeft(event)
-            eventdate = getEventDate(event) + datetime.timedelta(hours=2)
+            eventdate = getEventDate(event)
             if eventdate.strftime("%H:%M") == "00:00":
                 eventdate = eventdate.strftime("%d/%m")
             else:
-                eventdate = (eventdate + datetime.timedelta(hours=-1)).strftime("%d/%m %H:%M")
+                eventdate = (eventdate + datetime.timedelta(hours=1)).strftime("%d/%m %H:%M")
             embed.add_field(name=getTitle(event.get('summary')), value=eventdate, inline=False)
         await message.channel.send(embed=embed)
 
@@ -103,7 +103,7 @@ def parse_ical():
 def getEventDate(event):
     if type(event.get('dtstart').dt) is datetime.date:
         return datetime.datetime.combine(event.get('dtstart').dt, datetime.time(0, 0, 0), tzinfo=pytz.timezone(Timezone))
-    return event.get('dtstart').dt + datetime.timedelta(hours=-1)
+    return event.get('dtstart').dt
 
 def getNextEvent(cal):
     """Return the next event in the calendar
@@ -160,7 +160,7 @@ def CalcTimeLeft(event):
     timeleft=getEventDate(event)-datetime.datetime.now(pytz.timezone(Timezone))
     if getHours(timeleft) < 0:
         return 0
-    return timeleft + datetime.timedelta(hours=2)
+    return timeleft
 
 def delete_ical():
     """Delete the calendar file
