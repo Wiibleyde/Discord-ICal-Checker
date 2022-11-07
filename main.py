@@ -33,12 +33,15 @@ async def on_message(message):
             await message.channel.send(embed=embed)
         else:
             eventdate = getEventDate(event)
-            eventdate = eventdate.strftime("%d/%m %H:%M")
+            eventdate = (eventdate + datetime.timedelta(hours=1)).strftime("%d/%m %H:%M")
             embed.add_field(name="Dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m", value=eventdate, inline=False)
             await message.channel.send(embed=embed)
 
     if message.content.startswith('$help'):
-        embed = discord.Embed(title="Help", description="Liste des commandes" + "\n- $next : Get next event in the given calendar" + "\n- $week : Get event of the current week in the given calendar", color=0xeee657)
+        embed = discord.Embed(title="Commandes", description="Liste des commandes", color=0x00ff00)
+        embed.add_field(name="$next", value="Affiche le prochain cours", inline=False)
+        embed.add_field(name="$week", value="Affiche les cours des 7 prochains jours", inline=False)
+        embed.add_field(name="$help", value="Affiche cette aide", inline=False)
         await message.channel.send(embed=embed)
 
     if message.content.startswith('$update') and message.author.id == AdminId:
@@ -243,7 +246,6 @@ def getEventsWeek(cal):
     events = []
     sorted_events = sortEvents(cal)
     for event in sorted_events:
-        print(getTitle(event.get('summary')))
         if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=7):
             if getTitle(event.get('summary')) == "Férié":
                 continue
