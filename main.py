@@ -1,3 +1,14 @@
+# ===========================================================================================================================================================
+# Config part
+CalUrl="https://hp22.ynov.com/BOR/Telechargements/ical/Edt_BONNELL.ics?version=2022.0.3.1&idICal=BB1309C5D04314FC29CBCE40092D7C09&param=643d5b312e2e36325d2666683d3126663d31"
+BotToken="MTAyNzIxOTY0MjY0NjgwNjYzOA.GWN6_v.YQYWI78QIsfPD9ljgjBcBcRqKLfuRRzh2vvuec"
+Timezone="Europe/Paris"
+AdminId="461807010086780930"
+# End of config part
+# ===========================================================================================================================================================
+
+# Code by Wiibleyde
+
 import discord 
 import os
 import requests
@@ -7,12 +18,7 @@ import pytz
 import sys
 import asyncio
 
-CalUrl="https://hp22.ynov.com/BOR/Telechargements/ical/Edt_BONNELL.ics?version=2022.0.3.1&idICal=BB1309C5D04314FC29CBCE40092D7C09&param=643d5b312e2e36325d2666683d3126663d31"
-BotToken="MTAyNzIxOTY0MjY0NjgwNjYzOA.GWN6_v.YQYWI78QIsfPD9ljgjBcBcRqKLfuRRzh2vvuec"
-Timezone="Europe/Paris"
-AdminId="461807010086780930"
-
-client = discord.Client()
+client = discord.Client(intents=discord.Intents.all())
 
 @client.event
 async def on_ready():
