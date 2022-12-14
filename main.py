@@ -69,6 +69,9 @@ async def on_message(message):
             embed.add_field(name=getTitle(event.get('summary')), value=eventdate, inline=False)
         await message.channel.send(embed=embed)
 
+    if message.content.startswith('$wiibleyde'):
+        await message.channel.send("https://media.discordapp.net/attachments/940562878971400193/1016713259971268659/CAT_DANCE.gif")
+
 async def my_background_task():
     await client.wait_until_ready()
     count=0
