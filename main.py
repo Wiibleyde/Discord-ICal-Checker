@@ -75,7 +75,7 @@ class Database():
 
 @client.event
 async def on_ready():
-    stderr("We have logged in as {0.user}".format(client))
+    showerfunc("We have logged in as {0.user}".format(client))
 
 @client.event
 async def on_message(message):
@@ -177,12 +177,12 @@ async def my_background_task():
             count=0
         else:
             count=count+1
-            stderr("Waiting " + str(30-count) + " minutes")
+            showerfunc("Waiting " + str(30-count) + " minutes")
         cal=parse_ical()
         event=getNextEvent(cal)
         timeleft=CalcTimeLeft(event)
-        stderr("Next event in : " + str(timeleft) + " : " + event.get('summary') + " : " + getEventDate(event).strftime("%d/%m/%Y %H:%M:%S"))
-        stderr("Reload status")
+        # showerfunc("Next event in : " + str(timeleft) + " : " + event.get('summary') + " : " + getEventDate(event).strftime("%d/%m/%Y %H:%M:%S"))
+        # showerfunc("Reload status")
         if isMoreThanDay(timeleft):
             await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans plus d'un jour"))
         else:
@@ -195,9 +195,9 @@ def download_ical():
     try:
         r = requests.get(CalUrl, allow_redirects=True)
         open('calendar.ics', 'wb').write(r.content)
-        stderr("Calendar downloaded")
+        showerfunc("Calendar downloaded")
     except:
-        stderr("Error downloading calendar")
+        showerfunc("Error downloading calendar")
         sys.exit(1)
 
 def parse_ical():
@@ -205,7 +205,7 @@ def parse_ical():
         cal = icalendar.Calendar.from_ical(open('calendar.ics', 'rb').read())
         return cal
     except:
-        stderr("Error parsing calendar")
+        showerfunc("Error parsing calendar")
         sys.exit(1)
 
 def getEventDate(event):
@@ -231,8 +231,8 @@ def getNextEvent(cal):
                 continue
             return event
 
-def stderr(message):
-    """Print a message to stderr
+def showerfunc(message):
+    """Print a message to showerfunc
     
     Args:
         message (string): The message to print
@@ -278,9 +278,9 @@ def delete_ical():
     """
     try:
         os.remove("calendar.ics")
-        stderr("Calendar deleted")
+        showerfunc("Calendar deleted")
     except:
-        stderr("Error deleting calendar")
+        showerfunc("Error deleting calendar")
 
 def getMinutes(timeleft):
     """Return the minutes left before the event
