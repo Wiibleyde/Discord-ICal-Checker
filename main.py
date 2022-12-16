@@ -85,8 +85,13 @@ async def on_message(message):
     if message.content.startswith('$next'):
         LogsObj.AddLog(message.author.name,"$next")
         cal = parse_ical()
-        event = getNextEvent(cal)
-        timeleft = CalcTimeLeft(event)
+        try:
+            event = getNextEvent(cal)
+            timeleft = CalcTimeLeft(event)
+        except:
+            embed=discord.Embed(title="Prochain cours", description="Pas de cours", color=0xff0000)
+            await message.channel.send(embed=embed)
+            return
         embed = discord.Embed(title="Prochain cours", description=getTitle(event.get('summary')), color=0x00ff00)
         if isMoreThanDay(timeleft):
             embed.add_field(name="Dans", value=str(timeleft.days) + " jours", inline=False)
@@ -107,6 +112,10 @@ async def on_message(message):
         LogsObj.AddLog(message.author.name,"$week")
         cal = parse_ical()
         WeekEvents = getEventsWeek(cal)
+        if len(WeekEvents) == 0:
+            embed=discord.Embed(title="Cours de la semaine", description="Pas de cours", color=0xff0000)
+            await message.channel.send(embed=embed)
+            return
         embed = discord.Embed(title="Cours de la semaine", description="Liste des cours de la semaine", color=0x00ff00)
         for event in WeekEvents:
             timeleft = CalcTimeLeft(event)
@@ -179,14 +188,16 @@ async def my_background_task():
             count=count+1
             showerfunc("Waiting " + str(30-count) + " minutes")
         cal=parse_ical()
-        event=getNextEvent(cal)
-        timeleft=CalcTimeLeft(event)
-        # showerfunc("Next event in : " + str(timeleft) + " : " + event.get('summary') + " : " + getEventDate(event).strftime("%d/%m/%Y %H:%M:%S"))
-        # showerfunc("Reload status")
-        if isMoreThanDay(timeleft):
-            await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans plus d'un jour"))
-        else:
-            await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
+        try:
+            event=getNextEvent(cal)
+            timeleft=CalcTimeLeft(event)
+            if isMoreThanDay(timeleft):
+                await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans plus d'un jour"))
+            else:
+                await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
+        except:
+            showerfunc("No event found")
+            await client.change_presence(activity=discord.Game(name="Aucun cours prévu"))
         await asyncio.sleep(60)
 
 client.loop.create_task(my_background_task())
