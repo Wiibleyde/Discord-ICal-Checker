@@ -172,7 +172,7 @@ async def on_message(message):
             embed.add_field(name="$statscmdbyuser", value="Statistiques des commandes par utilisateur **(admin only)**", inline=False)
         embed.add_field(name="$next", value="Prochain évènement", inline=False)
         embed.add_field(name="$week", value="Evènements de la semaine", inline=False)
-        embed.add_field(name="$wiibleyde", value="Wiibleyde", inline=False)
+        # embed.add_field(name="$wiibleyde", value="Wiibleyde", inline=False)
         embed.add_field(name="$stats", value="Statistiques", inline=False)
         await message.channel.send(embed=embed)
 
