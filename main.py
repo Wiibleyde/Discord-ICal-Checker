@@ -396,5 +396,8 @@ if __name__ == "__main__":
     LogsObj=Database("logs.db")
     LogsObj.CreateDB()
     delete_ical()
-    download_ical()
+    try:
+        download_ical()
+    except:
+        pass
     client.run(BotToken)
