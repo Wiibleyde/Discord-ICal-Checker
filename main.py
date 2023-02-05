@@ -202,8 +202,8 @@ async def my_background_task():
                 else:
                     await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
             except:
-                showerfunc("No event found")
-                await client.change_presence(activity=discord.Game(name="Aucun cours prévu"))
+                showerfunc("No event found or error")
+                await client.change_presence(activity=discord.Game(name="Aucun cours prévu ou erreur"))
             await asyncio.sleep(60)
         except Exception as e:
             await client.change_presence(activity=discord.Game(name=f"Erreur: {e}"))
@@ -226,7 +226,6 @@ def parse_ical():
         return cal
     except:
         showerfunc("Error parsing calendar")
-        sys.exit(1)
 
 def getEventDate(event):
     if type(event.get('dtstart').dt) is datetime.date:
@@ -392,12 +391,38 @@ def sortEvents(cal):
         events.append(event)
     return sorted(events, key=lambda event: getEventDate(event))
 
+async def tryDownloadCalendar():
+    """Try to download the calendar
+
+    Returns:
+        None
+    """
+    CalDownloaded=False
+    while not CalDownloaded:
+        try:
+            download_ical()
+            CalDownloaded=True
+        except:
+            await asyncio.sleep(60)
+
 if __name__ == "__main__":
+    print("Starting...")
+    icaldownloaded=False
     LogsObj=Database("logs.db")
+    print("Creating database...")
     LogsObj.CreateDB()
+    print("Database created")
     delete_ical()
+    print("Downloading calendar...")
     try:
         download_ical()
+        print("Calendar downloaded")
+        icaldownloaded=True
     except:
+        print("Error downloading calendar")
         pass
-    client.run(BotToken)
+    if icaldownloaded:
+        print("Parsing calendar...")
+        client.run(BotToken)
+    else:
+        client.run(BotToken)
