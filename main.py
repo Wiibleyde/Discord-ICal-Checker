@@ -1,215 +1,103 @@
-# ===========================================================================================================================================================
-# Config part
-CalUrl="https://hp22.ynov.com/BOR/Telechargements/ical/Edt_BONNELL.ics?version=2022.0.3.1&idICal=BB1309C5D04314FC29CBCE40092D7C09&param=643d5b312e2e36325d2666683d3126663d31"
-BotToken="MTAyNzIxOTY0MjY0NjgwNjYzOA.GWN6_v.YQYWI78QIsfPD9ljgjBcBcRqKLfuRRzh2vvuec"
-Timezone="Europe/Paris"
-AdminName="Wiibleyde"
-# End of config part
-# ===========================================================================================================================================================
-
-# Code by Wiibleyde
-
-import discord 
-import os
+import discord
+from discord import app_commands
+from discord.ext import commands, tasks
+import json
 import requests
-import icalendar
 import datetime
-import pytz
-import sys
-import asyncio
 import sqlite3
-import time
+import os
+import asyncio
+import pytz
+import icalendar
+import sys
 
-client = discord.Client(intents=discord.Intents.all())
-
-class Database():
-    def __init__(self,fileName):
+class Config:
+    def __init__(self, fileName):
         self.fileName = fileName
+        self.data = self.loadFile()
+        self.token = self.data["Token"]
+        self.CalUrl = self.data["ICal Link"]
+        self.timezone = self.data["Timezone"]
+        self.adminName = self.data["AdminName"]
 
-    def CreateDB(self):
-        conn = sqlite3.connect(self.fileName)
-        c = conn.cursor()
-        c.execute('''CREATE TABLE IF NOT EXISTS logs
-                        (date text, time text, user text, cmd text)''')
-        conn.commit()
-        conn.close()
+    def createFile(self):
+        with open(self.fileName, "w") as f:
+            json.dump({"Token": "", "ICal Link": "", "Timezone": "Europe/Paris","AdminName":""}, f, indent=4)
 
-    def AddLog(self,user,cmd):
-        conn = sqlite3.connect(self.fileName)
-        c = conn.cursor()
-        c.execute("INSERT INTO logs VALUES (?,?,?,?)", (time.strftime("%d/%m/%Y"), time.strftime("%H:%M:%S"), user, cmd))
-        conn.commit()
-        conn.close()
-
-    def GetNbCmdUsed(self):
-        conn = sqlite3.connect(self.fileName)
-        c = conn.cursor()
-        c.execute("SELECT COUNT(*) FROM logs")
-        result = c.fetchone()
-        conn.close()
-        return result[0]
-
-    def GetNbCmdUsedByUser(self,user):
-        conn = sqlite3.connect(self.fileName)
-        c = conn.cursor()
-        c.execute("SELECT COUNT(*) FROM logs WHERE user=?", (user,))
-        result = c.fetchone()
-        conn.close()
-        return result[0]
-
-    def GetNbCmdUsedByCmd(self,cmd):
-        conn = sqlite3.connect(self.fileName)
-        c = conn.cursor()
-        c.execute("SELECT COUNT(*) FROM logs WHERE cmd=?", (cmd,))
-        result = c.fetchone()
-        conn.close()
-        return result[0]
-
-    def GetNbCmdUsedByUserAndCmd(self,user,cmd):
-        conn = sqlite3.connect(self.fileName)
-        c = conn.cursor()
-        c.execute("SELECT COUNT(*) FROM logs WHERE user=? AND cmd=?", (user,cmd))
-        result = c.fetchone()
-        conn.close()
-        return result[0]
-
-@client.event
-async def on_ready():
-    showerfunc("We have logged in as {0.user}".format(client))
-
-@client.event
-async def on_message(message):
-    try:
-        if message.author == client.user:
-            return
-
-        if message.content.startswith('$next'):
-            LogsObj.AddLog(message.author.name,"$next")
-            cal = parse_ical()
-            try:
-                event = getNextEvent(cal)
-                timeleft = CalcTimeLeft(event)
-            except:
-                embed=discord.Embed(title="Prochain cours", description="Pas de cours", color=0xff0000)
-                await message.channel.send(embed=embed)
-                return
-            embed = discord.Embed(title="Prochain cours", description=getTitle(event.get('summary')), color=0x00ff00)
-            if isMoreThanDay(timeleft):
-                embed.add_field(name="Dans", value=str(timeleft.days) + " jours", inline=False)
-                await message.channel.send(embed=embed)
-            else:
-                eventdate = getEventDate(event)
-                eventdate = (eventdate + datetime.timedelta(hours=1)).strftime("%d/%m %H:%M")
-                embed.add_field(name="Dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m", value=eventdate, inline=False)
-                await message.channel.send(embed=embed)
-
-        if message.content.startswith('$update') and message.author.name == AdminName:
-            LogsObj.AddLog(message.author.name,"$update")
-            delete_ical()
-            download_ical()
-            await message.channel.send("Calendar updated")
-        
-        if message.content.startswith('$week'):
-            LogsObj.AddLog(message.author.name,"$week")
-            cal = parse_ical()
-            WeekEvents = getEventsWeek(cal)
-            if len(WeekEvents) == 0:
-                embed=discord.Embed(title="Cours de la semaine", description="Pas de cours", color=0xff0000)
-                await message.channel.send(embed=embed)
-                return
-            embed = discord.Embed(title="Cours de la semaine", description="Liste des cours de la semaine", color=0x00ff00)
-            for event in WeekEvents:
-                timeleft = CalcTimeLeft(event)
-                eventdate = getEventDate(event)
-                if eventdate.strftime("%H:%M") == "00:00":
-                    eventdate = eventdate.strftime("%d/%m")
-                else:
-                    eventdate = (eventdate + datetime.timedelta(hours=1)).strftime("%d/%m %H:%M")
-                embed.add_field(name=getTitle(event.get('summary')), value=eventdate, inline=False)
-            await message.channel.send(embed=embed)
-
-        if message.content.startswith('$wiibleyde'):
-            LogsObj.AddLog(message.author.name,"$wiibleyde")
-            await message.channel.send("https://media.discordapp.net/attachments/940562878971400193/1016713259971268659/CAT_DANCE.gif")
-
-        if message.content.startswith('$stats'):
-            LogsObj.AddLog(message.author.name,"$stats")
-            embed = discord.Embed(title="Stats", description="Statistiques", color=0x00ff00)
-            embed.add_field(name="Nombre de commandes", value=str(LogsObj.GetNbCmdUsed()), inline=False)
-            embed.add_field(name="Nombre de commandes par " + message.author.name, value=str(LogsObj.GetNbCmdUsedByUser(message.author.name)), inline=False)
-            await message.channel.send(embed=embed)
-            
-        if message.content.startswith('$cmdstats') and message.author.name == AdminName:
-            LogsObj.AddLog(message.author.name,"$cmdstats")
-            embed = discord.Embed(title="Stats", description="Statistiques", color=0x00ff00)
-            embed.add_field(name="Nombre de commandes $next", value=str(LogsObj.GetNbCmdUsedByCmd("$next")), inline=False)
-            embed.add_field(name="Nombre de commandes $week", value=str(LogsObj.GetNbCmdUsedByCmd("$week")), inline=False)
-            embed.add_field(name="Nombre de commandes $help", value=str(LogsObj.GetNbCmdUsedByCmd("$help")), inline=False)
-            embed.add_field(name="Nombre de commandes $update", value=str(LogsObj.GetNbCmdUsedByCmd("$update")), inline=False)
-            embed.add_field(name="Nombre de commandes $stats", value=str(LogsObj.GetNbCmdUsedByCmd("$stats")), inline=False)
-            embed.add_field(name="Nombre de commandes $statscmd", value=str(LogsObj.GetNbCmdUsedByCmd("$statscmd")), inline=False)
-            embed.add_field(name="Nombre de commandes $wiibleyde", value=str(LogsObj.GetNbCmdUsedByCmd("$wiibleyde")), inline=False)
-            await message.channel.send(embed=embed)
-
-        if message.content.startswith('$cmdstatsbyuser') and message.author.name == AdminName:
-            LogsObj.AddLog(message.author.name,"$cmdstatsbyuser")
-            user=message.content.split(" ")[1]
-            embed = discord.Embed(title="Stats", description="Statistiques", color=0x00ff00)
-            embed.add_field(name="Nombre de commandes $next par " + user, value=str(LogsObj.GetNbCmdUsedByCmdByUser("$next",user)), inline=False)
-            embed.add_field(name="Nombre de commandes $week par " + user, value=str(LogsObj.GetNbCmdUsedByCmdByUser("$week",user)), inline=False)
-            embed.add_field(name="Nombre de commandes $help par " + user, value=str(LogsObj.GetNbCmdUsedByCmdByUser("$help",user)), inline=False)
-            embed.add_field(name="Nombre de commandes $update par " + user, value=str(LogsObj.GetNbCmdUsedByCmdByUser("$update",user)), inline=False)
-            embed.add_field(name="Nombre de commandes $stats par " + user, value=str(LogsObj.GetNbCmdUsedByCmdByUser("$stats",user)), inline=False)
-            embed.add_field(name="Nombre de commandes $statscmd par " + user, value=str(LogsObj.GetNbCmdUsedByCmdByUser("$statscmd",user)), inline=False)
-            embed.add_field(name="Nombre de commandes $wiibleyde par " + user, value=str(LogsObj.GetNbCmdUsedByCmdByUser("$wiibleyde",user)), inline=False)
-            await message.channel.send(embed=embed)
-
-        if message.content.startswith('$help'):
-            LogsObj.AddLog(message.author.name,"$help")
-            embed = discord.Embed(title="Commandes", description="Liste des commandes", color=0x00ff00)
-            if message.author.name == AdminName:
-                embed.add_field(name="$update", value="Mise à jour des données **(admin only)**", inline=False)
-                embed.add_field(name="$statscmd", value="Statistiques des commandes **(admin only)**", inline=False)
-                embed.add_field(name="$statscmdbyuser", value="Statistiques des commandes par utilisateur **(admin only)**", inline=False)
-            embed.add_field(name="$next", value="Prochain évènement", inline=False)
-            embed.add_field(name="$week", value="Evènements de la semaine", inline=False)
-            # embed.add_field(name="$wiibleyde", value="Wiibleyde", inline=False)
-            embed.add_field(name="$stats", value="Statistiques", inline=False)
-            await message.channel.send(embed=embed)
-    except Exception as e:
-        embed = discord.Embed(title="Erreur", description="Une erreur est survenue", color=0xff0000)
-        embed.add_field(name="Erreur", value=str(e), inline=False)
-        await message.channel.send(embed=embed)
-
-async def my_background_task():
-    await client.wait_until_ready()
-    count=0
-    while not client.is_closed():
+    def loadFile(self):
         try:
-            if count == 30:
-                delete_ical()
-                download_ical()
-                count=0
-            else:
-                count=count+1
-                showerfunc("Waiting " + str(30-count) + " minutes")
-            cal=parse_ical()
-            try:
-                event=getNextEvent(cal)
-                timeleft=CalcTimeLeft(event)
-                if isMoreThanDay(timeleft):
-                    await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans plus d'un jour"))
-                else:
-                    await client.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
-            except:
-                showerfunc("No event found or error")
-                await client.change_presence(activity=discord.Game(name="Aucun cours prévu ou erreur"))
-            await asyncio.sleep(60)
-        except Exception as e:
-            await client.change_presence(activity=discord.Game(name=f"Erreur: {e}"))
-            await asyncio.sleep(60)
+            with open(self.fileName, "r") as f:
+                return json.load(f)
+        except FileNotFoundError:
+            self.createFile()
+            print("Created config file")
+            print("Please fill in the config file")
+            exit()
 
-client.loop.create_task(my_background_task())
+    def setKey(self, key, value):
+        self.data[key] = value
+        self.saveFile()
+
+    def getKey(self, key):
+        return self.data[key]
+
+    def saveFile(self):
+        with open(self.fileName, "w") as f:
+            json.dump(self.data, f, indent=4)
+
+class DataLogs:
+    def __init__(self, fileName):
+        self.fileName = fileName
+        req = "CREATE TABLE IF NOT EXISTS logs (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, command TEXT, date TEXT)"
+        self.conn = sqlite3.connect(self.fileName)
+        self.cursor = self.conn.cursor()
+        self.cursor.execute(req)
+        self.conn.commit()
+    
+    def addLog(self, user_id, command):
+        req = "INSERT INTO logs (user_id, command, date) VALUES (?, ?, ?)"
+        self.cursor.execute(req, (user_id, command, datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
+        self.conn.commit()
+
+    def getLogs(self):
+        req = "SELECT * FROM logs"
+        self.cursor.execute(req)
+        return self.cursor.fetchall()
+
+    def getLogsByUser(self, user_id):
+        req = "SELECT * FROM logs WHERE user_id=?"
+        self.cursor.execute(req, (user_id,))
+        return self.cursor.fetchall()
+
+    def getLogsByCommand(self, command):
+        req = "SELECT * FROM logs WHERE command=?"
+        self.cursor.execute(req, (command,))
+        return self.cursor.fetchall()
+
+    def getLogsByDate(self, date):
+        req = "SELECT * FROM logs WHERE date=?"
+        self.cursor.execute(req, (date,))
+        return self.cursor.fetchall()
+
+    def getLogsByUserAndCommand(self, user_id, command):
+        req = "SELECT * FROM logs WHERE user_id=? AND command=?"
+        self.cursor.execute(req, (user_id, command))
+        return self.cursor.fetchall()
+
+    def getLogsByUserAndDate(self, user_id, date):
+        req = "SELECT * FROM logs WHERE user_id=? AND date=?"
+        self.cursor.execute(req, (user_id, date))
+        return self.cursor.fetchall()
+
+    def getLogsByCommandAndDate(self, command, date):
+        req = "SELECT * FROM logs WHERE command=? AND date=?"
+        self.cursor.execute(req, (command, date))
+        return self.cursor.fetchall()
+
+    def getLogsByUserAndCommandAndDate(self, user_id, command, date):
+        req = "SELECT * FROM logs WHERE user_id=? AND command=? AND date=?"
+        self.cursor.execute(req, (user_id, command, date))
+        return self.cursor.fetchall()
 
 def download_ical():
     try:
@@ -405,24 +293,110 @@ async def tryDownloadCalendar():
         except:
             await asyncio.sleep(60)
 
-if __name__ == "__main__":
-    print("Starting...")
-    icaldownloaded=False
-    LogsObj=Database("logs.db")
-    print("Creating database...")
-    LogsObj.CreateDB()
-    print("Database created")
-    delete_ical()
-    print("Downloading calendar...")
+bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
+
+@bot.event
+async def on_ready():
+    print("Bot is ready")
+    ChangeStatus.start()
     try:
-        download_ical()
-        print("Calendar downloaded")
-        icaldownloaded=True
+        synced = await bot.tree.sync()
+        print(f"Synced {len(synced)} commands")
+        print(f"Commands: {synced}")
+    except Exception as e:
+        print(f"Failed to sync commands: {e}")
+
+@bot.tree.command(name="next", description="Affiche le prochain cours")
+async def nextCourse(interaction: discord.Interaction):
+    logs.addLog(interaction.user.id,"next")
+    calenderParsed = parse_ical()
+    try:
+        event = getNextEvent(calenderParsed)
+        timeleft = CalcTimeLeft(event)
     except:
-        print("Error downloading calendar")
-        pass
-    if icaldownloaded:
-        print("Parsing calendar...")
-        client.run(BotToken)
+        embed = discord.Embed(title="Prochain cours", description="Pas de cours", color=0x00ff00)
+        await interaction.response.send_message(embed=embed)
+        return
+    if isMoreThanDay(timeleft):
+        embed = discord.Embed(title="Prochain cours", description=f"Le prochain cours à venir.", color=0x00ff00)
+        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Dans {timeleft.days} jours", inline=False)
     else:
-        client.run(BotToken)
+        embed = discord.Embed(title="Prochain cours", description=f"Le prochain cours à venir.", color=0x00ff00)
+        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Dans {getHours(timeleft)}h{getMinutes(timeleft)}", inline=False)
+    await interaction.response.send_message(embed=embed)
+
+@bot.tree.command(name="week", description="Affiche les cours de la semaine")
+async def weekCourse(interaction: discord.Interaction):
+    logs.addLog(interaction.user.id,"week")
+    cal = parse_ical()
+    WeekEvents = getEventsWeek(cal)
+    if len(WeekEvents) == 0:
+        embed=discord.Embed(title="Cours de la semaine", description="Pas de cours", color=0xff0000)
+        await interaction.response.send_message(embed=embed)
+        return
+    embed = discord.Embed(title="Cours de la semaine", description="Liste des cours de la semaine", color=0x00ff00)
+    for event in WeekEvents:
+        timeleft = CalcTimeLeft(event)
+        eventdate = getEventDate(event)
+        if eventdate.strftime("%H:%M") == "00:00":
+            eventdate = eventdate.strftime("%d/%m")
+        else:
+            eventdate = (eventdate + datetime.timedelta(hours=1)).strftime("%d/%m %H:%M")
+        embed.add_field(name=getTitle(event.get('summary')), value=eventdate, inline=False)  
+    await interaction.response.send_message(embed=embed)
+
+@bot.tree.command(name="update", description="Mets à jour le calendrier")
+async def updateCalendar(interaction: discord.Interaction):
+    logs.addLog(interaction.user.id,"update")
+    if interaction.author.id != 200954812481282049:
+        await interaction.response.send_message("Vous n'avez pas la permission d'utiliser cette commande")
+        return
+    await interaction.response.send_message("Mise à jour du calendrier...")
+    await tryDownloadCalendar()
+    await interaction.response.send_message("Mise à jour terminée")
+
+@bot.tree.command(name="help", description="Affiche l'aide")
+async def help(interaction: discord.Interaction):
+    embed = discord.Embed(title="Aide", description="Liste des commandes", color=0x00ff00)
+    for command in bot.tree.commands:
+        embed.add_field(name=command.name, value=command.description, inline=False)
+    await interaction.response.send_message(embed=embed)
+
+@tasks.loop(seconds=60)
+async def ChangeStatus():
+    await bot.wait_until_ready()
+    count=0
+    while not bot.is_closed():
+        try:
+            if count == 30:
+                delete_ical()
+                download_ical()
+                count=0
+            else:
+                count=count+1
+                showerfunc("Waiting " + str(30-count) + " minutes")
+            cal=parse_ical()
+            try:
+                event=getNextEvent(cal)
+                timeleft=CalcTimeLeft(event)
+                if isMoreThanDay(timeleft):
+                    await bot.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans plus d'un jour"))
+                else:
+                    await bot.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
+            except:
+                showerfunc("No event found or error")
+                await bot.change_presence(activity=discord.Game(name="Aucun cours prévu ou erreur"))
+            await asyncio.sleep(60)
+        except Exception as e:
+            await bot.change_presence(activity=discord.Game(name=f"Erreur: {e}"))
+            await asyncio.sleep(60)
+
+if __name__ == "__main__":
+    config = Config("config.json")
+    TOKEN = config.token
+    CalUrl = config.CalUrl
+    Timezone = config.timezone
+    logs = DataLogs("database.db")
+    delete_ical()
+    download_ical()
+    bot.run(TOKEN)
