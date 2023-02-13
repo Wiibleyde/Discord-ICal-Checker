@@ -380,7 +380,7 @@ async def ChangeStatus():
                 event=getNextEvent(cal)
                 timeleft=CalcTimeLeft(event)
                 if isMoreThanDay(timeleft):
-                    await bot.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans plus d'un jour"))
+                    await bot.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(timeleft.days) + " jours"))
                 else:
                     await bot.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
             except:
