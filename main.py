@@ -305,7 +305,10 @@ async def on_ready():
         print(f"Commands: {synced}")
     except Exception as e:
         print(f"Failed to sync commands: {e}")
-    RedownloadCalendar.start()
+    if not os.path.exists("calendar.ics"):
+        RedownloadCalendar.start()
+    if not os.path.exists("calendar.ics"):
+        await ForceUpdate.start()
     ChangeStatus.start()
     print("Bot has started and all tasks are running")
 
@@ -384,6 +387,12 @@ async def ChangeStatus():
 @tasks.loop(hours=1)
 async def RedownloadCalendar():
     await tryDownloadCalendar()
+
+@tasks.loop(seconds=30)
+async def ForceUpdate():
+    if os.path.exists("calendar.ics"):
+        await tryDownloadCalendar()
+        ForceUpdate.cancel()
 
 if __name__ == "__main__":
     config = Config("config.json")
