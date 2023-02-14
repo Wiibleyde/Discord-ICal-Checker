@@ -298,13 +298,16 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 @bot.event
 async def on_ready():
     print("Bot is ready")
-    ChangeStatus.start()
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Starting..."))
     try:
         synced = await bot.tree.sync()
         print(f"Synced {len(synced)} commands")
         print(f"Commands: {synced}")
     except Exception as e:
         print(f"Failed to sync commands: {e}")
+    RedownloadCalendar.start()
+    ChangeStatus.start()
+    print("Bot has started and all tasks are running")
 
 @bot.tree.command(name="next", description="Affiche le prochain cours")
 async def nextCourse(interaction: discord.Interaction):
@@ -358,38 +361,29 @@ async def updateCalendar(interaction: discord.Interaction):
 @bot.tree.command(name="help", description="Affiche l'aide")
 async def help(interaction: discord.Interaction):
     embed = discord.Embed(title="Aide", description="Liste des commandes", color=0x00ff00)
-    for command in bot.tree.commands:
-        embed.add_field(name=command.name, value=command.description, inline=False)
+    embed.add_field(name="next", value="Affiche le prochain cours", inline=False)
+    embed.add_field(name="week", value="Affiche les cours de la semaine", inline=False)
+    embed.add_field(name="update", value="Mets à jour le calendrier", inline=False)
+    embed.add_field(name="help", value="Affiche l'aide. *mais naaaan sérieuuuuuux", inline=False)
     await interaction.response.send_message(embed=embed)
 
-@tasks.loop(seconds=60)
+@tasks.loop(seconds=30)
 async def ChangeStatus():
-    await bot.wait_until_ready()
-    count=0
-    while not bot.is_closed():
-        try:
-            if count == 30:
-                delete_ical()
-                download_ical()
-                count=0
-            else:
-                count=count+1
-                showerfunc("Waiting " + str(30-count) + " minutes")
-            cal=parse_ical()
-            try:
-                event=getNextEvent(cal)
-                timeleft=CalcTimeLeft(event)
-                if isMoreThanDay(timeleft):
-                    await bot.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(timeleft.days) + " jours"))
-                else:
-                    await bot.change_presence(activity=discord.Game(name=getTitle(event.get('summary')) + " dans " + str(getHours(timeleft)) + "h" + str(getMinutes(timeleft)) + "m"))
-            except:
-                showerfunc("No event found or error")
-                await bot.change_presence(activity=discord.Game(name="Aucun cours prévu ou erreur"))
-            await asyncio.sleep(60)
-        except Exception as e:
-            await bot.change_presence(activity=discord.Game(name=f"Erreur: {e}"))
-            await asyncio.sleep(60)
+    calenderParsed = parse_ical()
+    try:
+        event = getNextEvent(calenderParsed)
+        timeleft = CalcTimeLeft(event)
+    except:
+        await bot.change_presence(activity=discord.Game(name="Pas de cours"))
+        return
+    if isMoreThanDay(timeleft):
+        await bot.change_presence(activity=discord.Game(name=f"{getTitle(event.get('summary'))} dans {timeleft.days} jours"))
+    else:
+        await bot.change_presence(activity=discord.Game(name=f"{getTitle(event.get('summary'))} dans {getHours(timeleft)}h{getMinutes(timeleft)}"))
+
+@tasks.loop(hours=1)
+async def RedownloadCalendar():
+    await tryDownloadCalendar()
 
 if __name__ == "__main__":
     config = Config("config.json")
