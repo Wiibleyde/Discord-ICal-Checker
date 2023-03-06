@@ -354,12 +354,12 @@ async def weekCourse(interaction: discord.Interaction):
 @bot.tree.command(name="update", description="Mets à jour le calendrier")
 async def updateCalendar(interaction: discord.Interaction):
     logs.addLog(interaction.user.id,"update")
-    if interaction.author.id != 200954812481282049:
+    if interaction.user.id != 461807010086780930:
         await interaction.response.send_message("Vous n'avez pas la permission d'utiliser cette commande")
         return
-    await interaction.response.send_message("Mise à jour du calendrier...")
     await tryDownloadCalendar()
-    await interaction.response.send_message("Mise à jour terminée")
+    await interaction.response.send_message("Mise à jour effectuée")
+
 
 @bot.tree.command(name="help", description="Affiche l'aide")
 async def help(interaction: discord.Interaction):
