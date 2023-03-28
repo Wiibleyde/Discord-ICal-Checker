@@ -1,0 +1,8 @@
+discord.py
+discord-ext-bot
+datetime
+requests
+bs4
+requests
+icalendar
+pytz
