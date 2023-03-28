@@ -9,7 +9,7 @@ RUN python3 -m pip install -r requirements.txt
 # Copy the source code, configuration file, and database file
 COPY main.py .
 COPY config.json .
-COPY logs.db .
+COPY database.db .
 
 # Set environment variables for the bot to use
 ENV BOT_LOGS_DIR=/app/logs
