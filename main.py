@@ -347,7 +347,7 @@ async def weekCourse(interaction: discord.Interaction):
         if eventdate.strftime("%H:%M") == "00:00":
             eventdate = eventdate.strftime("%d/%m")
         else:
-            eventdate = (eventdate + datetime.timedelta(hours=1)).strftime("%d/%m %H:%M")
+            eventdate = (eventdate + datetime.timedelta(hours=2)).strftime("%d/%m %H:%M")
         embed.add_field(name=getTitle(event.get('summary')), value=eventdate, inline=False)  
     await interaction.response.send_message(embed=embed)
 
