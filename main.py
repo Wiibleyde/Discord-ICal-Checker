@@ -222,6 +222,17 @@ def getTitle(event):
     """
     return event.split(" - ")[0]
 
+def getTeacher(event):
+    """Return the teacher of the event
+
+    Args:
+        event (string): The event
+
+    Returns:
+        string: The teacher
+    """
+    return event.split(" - ")[1]
+
 def isMoreThanDay(timeleft):
     """Return if the time left is more than a day
 
@@ -325,11 +336,15 @@ async def nextCourse(interaction: discord.Interaction):
         return
     if isMoreThanDay(timeleft):
         embed = discord.Embed(title="Prochain cours", description=f"Le prochain cours à venir.", color=0x00ff00)
-        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Dans {timeleft.days} jours", inline=False)
+        if event.get('location') == None:
+            event['location'] = "Nowhere"
+        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary'))}\nÀ {event.get('location')}\n**Dans {timeleft.days} jours**", inline=False)
     else:
         embed = discord.Embed(title="Prochain cours", description=f"Le prochain cours à venir.", color=0x00ff00)
-        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Dans {getHours(timeleft)}h{getMinutes(timeleft)}", inline=False)
-    await interaction.response.send_message(embed=embed)
+        if event.get('location') == None:
+            event['location'] = "Nowhere"
+        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary'))}\nÀ {event.get('location')}\n**Dans {getHours(timeleft)}h{getMinutes(timeleft)}**", inline=False)
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @bot.tree.command(name="week", description="Affiche les cours de la semaine")
 async def weekCourse(interaction: discord.Interaction):
@@ -338,28 +353,38 @@ async def weekCourse(interaction: discord.Interaction):
     WeekEvents = getEventsWeek(cal)
     if len(WeekEvents) == 0:
         embed=discord.Embed(title="Cours de la semaine", description="Pas de cours", color=0xff0000)
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
         return
     embed = discord.Embed(title="Cours de la semaine", description="Liste des cours de la semaine", color=0x00ff00)
     for event in WeekEvents:
-        timeleft = CalcTimeLeft(event)
+        # timeleft = CalcTimeLeft(event)
         eventdate = getEventDate(event)
         if eventdate.strftime("%H:%M") == "00:00":
             eventdate = eventdate.strftime("%d/%m")
         else:
             eventdate = (eventdate + datetime.timedelta(hours=2)).strftime("%d/%m %H:%M")
-        embed.add_field(name=getTitle(event.get('summary')), value=eventdate, inline=False)  
-    await interaction.response.send_message(embed=embed)
+        if event.get('location') == None:
+            event['location'] = "Nowhere"
+        embed.add_field(name=f"{getTitle(event.get('summary'))} - {getTeacher(event.get('summary'))}", value=f"{eventdate} à {event.get('location')}", inline=False)  
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @bot.tree.command(name="update", description="Mets à jour le calendrier")
 async def updateCalendar(interaction: discord.Interaction):
     logs.addLog(interaction.user.id,"update")
     if interaction.user.id != 461807010086780930:
-        await interaction.response.send_message("Vous n'avez pas la permission d'utiliser cette commande")
+        await interaction.response.send_message("Vous n'avez pas la permission d'utiliser cette commande", ephemeral=True)
         return
     await tryDownloadCalendar()
-    await interaction.response.send_message("Mise à jour effectuée")
+    await interaction.response.send_message("Mise à jour effectuée", ephemeral=True)
 
+@bot.tree.command(name="reload", description="Recharge le status")
+async def updateCalendar(interaction: discord.Interaction):
+    logs.addLog(interaction.user.id,"update")
+    if interaction.user.id != 461807010086780930:
+        await interaction.response.send_message("Vous n'avez pas la permission d'utiliser cette commande", ephemeral=True)
+        return
+    ChangeStatus.restart()
+    await interaction.response.send_message("Rechargement effectué", ephemeral=True)
 
 @bot.tree.command(name="help", description="Affiche l'aide")
 async def help(interaction: discord.Interaction):
@@ -368,7 +393,7 @@ async def help(interaction: discord.Interaction):
     embed.add_field(name="week", value="Affiche les cours de la semaine", inline=False)
     embed.add_field(name="update", value="Mets à jour le calendrier", inline=False)
     embed.add_field(name="help", value="Affiche l'aide. *mais naaaan sérieuuuuuux", inline=False)
-    await interaction.response.send_message(embed=embed)
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @tasks.loop(seconds=30)
 async def ChangeStatus():
