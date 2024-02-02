@@ -6,6 +6,8 @@ class Config:
         self.default = {
             'bot_token': 'YOUR_BOT_TOKEN',
             'calendar_url': 'YOUR_CALENDAR_URL',
+            'timezone': 'Europe/Paris',
+            'channel_update_id': 'YOUR_CHANNEL_ID',
         }
         self.path = path
         self.config = self.load_config()
