@@ -1,107 +1,20 @@
 import discord
 from discord import app_commands
 from discord.ext import commands, tasks
-import json
 import requests
 import datetime
-import sqlite3
 import os
 import asyncio
 import pytz
 import icalendar
 import sys
 
-class Config:
-    def __init__(self, fileName):
-        self.fileName = fileName
-        self.data = self.loadFile()
-        self.token = self.data["Token"]
-        self.CalUrl = self.data["ICal Link"]
-        self.timezone = self.data["Timezone"]
-        self.adminName = self.data["AdminName"]
-
-    def createFile(self):
-        with open(self.fileName, "w") as f:
-            json.dump({"Token": "", "ICal Link": "", "Timezone": "Europe/Paris","AdminName":""}, f, indent=4)
-
-    def loadFile(self):
-        try:
-            with open(self.fileName, "r") as f:
-                return json.load(f)
-        except FileNotFoundError:
-            self.createFile()
-            print("Created config file")
-            print("Please fill in the config file")
-            exit()
-
-    def setKey(self, key, value):
-        self.data[key] = value
-        self.saveFile()
-
-    def getKey(self, key):
-        return self.data[key]
-
-    def saveFile(self):
-        with open(self.fileName, "w") as f:
-            json.dump(self.data, f, indent=4)
-
-class DataLogs:
-    def __init__(self, fileName):
-        self.fileName = fileName
-        req = "CREATE TABLE IF NOT EXISTS logs (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, command TEXT, date TEXT)"
-        self.conn = sqlite3.connect(self.fileName)
-        self.cursor = self.conn.cursor()
-        self.cursor.execute(req)
-        self.conn.commit()
-    
-    def addLog(self, user_id, command):
-        req = "INSERT INTO logs (user_id, command, date) VALUES (?, ?, ?)"
-        self.cursor.execute(req, (user_id, command, datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
-        self.conn.commit()
-
-    def getLogs(self):
-        req = "SELECT * FROM logs"
-        self.cursor.execute(req)
-        return self.cursor.fetchall()
-
-    def getLogsByUser(self, user_id):
-        req = "SELECT * FROM logs WHERE user_id=?"
-        self.cursor.execute(req, (user_id,))
-        return self.cursor.fetchall()
-
-    def getLogsByCommand(self, command):
-        req = "SELECT * FROM logs WHERE command=?"
-        self.cursor.execute(req, (command,))
-        return self.cursor.fetchall()
-
-    def getLogsByDate(self, date):
-        req = "SELECT * FROM logs WHERE date=?"
-        self.cursor.execute(req, (date,))
-        return self.cursor.fetchall()
-
-    def getLogsByUserAndCommand(self, user_id, command):
-        req = "SELECT * FROM logs WHERE user_id=? AND command=?"
-        self.cursor.execute(req, (user_id, command))
-        return self.cursor.fetchall()
-
-    def getLogsByUserAndDate(self, user_id, date):
-        req = "SELECT * FROM logs WHERE user_id=? AND date=?"
-        self.cursor.execute(req, (user_id, date))
-        return self.cursor.fetchall()
-
-    def getLogsByCommandAndDate(self, command, date):
-        req = "SELECT * FROM logs WHERE command=? AND date=?"
-        self.cursor.execute(req, (command, date))
-        return self.cursor.fetchall()
-
-    def getLogsByUserAndCommandAndDate(self, user_id, command, date):
-        req = "SELECT * FROM logs WHERE user_id=? AND command=? AND date=?"
-        self.cursor.execute(req, (user_id, command, date))
-        return self.cursor.fetchall()
+from src.config import Config
+from src.db import Database, CommandLog, Message
 
 def download_ical():
     try:
-        r = requests.get(CalUrl, allow_redirects=True)
+        r = requests.get(calendar_url, allow_redirects=True)
         open('calendar.ics', 'wb').write(r.content)
         showerfunc("Calendar downloaded")
     except:
@@ -117,8 +30,21 @@ def parse_ical():
 
 def getEventDate(event):
     if type(event.get('dtstart').dt) is datetime.date:
-        return datetime.datetime.combine(event.get('dtstart').dt, datetime.time(0, 0, 0), tzinfo=pytz.timezone(Timezone))
+        return datetime.datetime.combine(event.get('dtstart').dt, datetime.time(0, 0, 0), tzinfo=pytz.timezone(timezone))
     return event.get('dtstart').dt
+
+def getEventEndDate(event):
+    if type(event.get('dtend').dt) is datetime.date:
+        return datetime.datetime.combine(event.get('dtend').dt, datetime.time(0, 0, 0), tzinfo=pytz.timezone(timezone))
+    return event.get('dtend').dt
+
+def getNowEvent(cal):
+    # Return the event that is happening now (so beginning before now and ending after now)
+    now = datetime.datetime.now(pytz.timezone(timezone))
+    for event in cal.walk('vevent'):
+        if getEventDate(event) < now and getEventEndDate(event) > now:
+            return event
+    return None
 
 def getNextEvent(cal):
     """Return the next event in the calendar
@@ -131,7 +57,7 @@ def getNextEvent(cal):
     """
     events = getAllEvents(cal)
     sorted_events = sorted(events, key=lambda event: getEventDate(event))
-    now=datetime.datetime.now(pytz.timezone(Timezone))
+    now=datetime.datetime.now(pytz.timezone(timezone))
     for event in sorted_events:
         if getEventDate(event) > now:
             if getTitle(event.get('summary')) == "Férié":
@@ -172,7 +98,7 @@ def CalcTimeLeft(event):
     Returns:
         datetime.timedelta: The time left
     """
-    timeleft=getEventDate(event)-datetime.datetime.now(pytz.timezone(Timezone))
+    timeleft=getEventDate(event)-datetime.datetime.now(pytz.timezone(timezone))
     if getHours(timeleft) < 0:
         return 0
     return timeleft
@@ -254,7 +180,7 @@ def InEvent(cal):
         bool: True if in an event, False otherwise
     """
     for event in cal.walk('vevent'):
-        if getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) + datetime.timedelta(minutes=30) > datetime.datetime.now(pytz.timezone(Timezone)):
+        if getEventDate(event) < datetime.datetime.now(pytz.timezone(timezone)) and getEventDate(event) + datetime.timedelta(minutes=30) > datetime.datetime.now(pytz.timezone(timezone)):
             return True
     return False
 
@@ -270,7 +196,7 @@ def getEventsWeek(cal):
     events = []
     sorted_events = sortEvents(cal)
     for event in sorted_events:
-        if getEventDate(event) > datetime.datetime.now(pytz.timezone(Timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(Timezone)) + datetime.timedelta(days=7):
+        if getEventDate(event) > datetime.datetime.now(pytz.timezone(timezone)) and getEventDate(event) < datetime.datetime.now(pytz.timezone(timezone)) + datetime.timedelta(days=7):
             if getTitle(event.get('summary')) == "Férié":
                 continue
             events.append(event)
@@ -325,7 +251,7 @@ async def on_ready():
 
 @bot.tree.command(name="next", description="Affiche le prochain cours")
 async def nextCourse(interaction: discord.Interaction):
-    logs.addLog(interaction.user.id,"next")
+    logs.insert_log(CommandLog(date=datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"), user=interaction.user.id, command="next"))
     calenderParsed = parse_ical()
     try:
         event = getNextEvent(calenderParsed)
@@ -348,7 +274,7 @@ async def nextCourse(interaction: discord.Interaction):
 
 @bot.tree.command(name="week", description="Affiche les cours de la semaine")
 async def weekCourse(interaction: discord.Interaction):
-    logs.addLog(interaction.user.id,"week")
+    logs.insert_log(CommandLog(date=datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"), user=interaction.user.id, command="week"))
     cal = parse_ical()
     WeekEvents = getEventsWeek(cal)
     if len(WeekEvents) == 0:
@@ -370,7 +296,7 @@ async def weekCourse(interaction: discord.Interaction):
 
 @bot.tree.command(name="update", description="Mets à jour le calendrier")
 async def updateCalendar(interaction: discord.Interaction):
-    logs.addLog(interaction.user.id,"update")
+    logs.insert_log(CommandLog(date=datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"), user=interaction.user.id, command="update"))
     if interaction.user.id != 461807010086780930:
         await interaction.response.send_message("Vous n'avez pas la permission d'utiliser cette commande", ephemeral=True)
         return
@@ -379,7 +305,7 @@ async def updateCalendar(interaction: discord.Interaction):
 
 @bot.tree.command(name="reload", description="Recharge le status")
 async def updateCalendar(interaction: discord.Interaction):
-    logs.addLog(interaction.user.id,"update")
+    logs.insert_log(CommandLog(date=datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"), user=interaction.user.id, command="reload"))
     if interaction.user.id != 461807010086780930:
         await interaction.response.send_message("Vous n'avez pas la permission d'utiliser cette commande", ephemeral=True)
         return
@@ -388,6 +314,7 @@ async def updateCalendar(interaction: discord.Interaction):
 
 @bot.tree.command(name="help", description="Affiche l'aide")
 async def help(interaction: discord.Interaction):
+    logs.insert_log(CommandLog(date=datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"), user=interaction.user.id, command="help"))
     embed = discord.Embed(title="Aide", description="Liste des commandes", color=0x00ff00)
     embed.add_field(name="next", value="Affiche le prochain cours", inline=False)
     embed.add_field(name="week", value="Affiche les cours de la semaine", inline=False)
@@ -401,6 +328,7 @@ async def ChangeStatus():
     try:
         event = getNextEvent(calenderParsed)
         timeleft = CalcTimeLeft(event)
+        nowCourse = getNowEvent(calenderParsed)
     except:
         await bot.change_presence(activity=discord.Game(name="Pas de cours"))
         return
@@ -408,6 +336,28 @@ async def ChangeStatus():
         await bot.change_presence(activity=discord.Game(name=f"{getTitle(event.get('summary'))} dans {timeleft.days} jours"))
     else:
         await bot.change_presence(activity=discord.Game(name=f"{getTitle(event.get('summary'))} dans {getHours(timeleft)}h{getMinutes(timeleft)}"))
+    if nowCourse:
+        embed = discord.Embed(title="Cours en cours", description=f"Le cours actuel.", color=0x00ff00)
+        embed.add_field(name=f"{getTitle(nowCourse.get('summary'))}", value=f"Avec {getTeacher(nowCourse.get('summary'))}", inline=False)
+        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary'))} <t:{int(getEventDate(event).timestamp())}:R>", inline=False)
+        if logs.get_message("now") == None:
+            channel = bot.get_channel(channel_update_id)
+            message = await channel.send(embed=embed)
+            logs.insert_message(Message(message_id=message.id, name="now"))
+        else:
+            message = await bot.get_channel(channel_update_id).fetch_message(logs.get_message("now")[1])
+            await message.edit(embed=embed)
+    else:
+        embed = discord.Embed(title="Cours en cours", description=f"Le cours actuel.", color=0x00ff00)
+        embed.add_field(name='Aucun cours', value='Pas de cours actuellement', inline=False)
+        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary'))} <t:{int(getEventDate(event).timestamp())}:R>", inline=False)
+        if logs.get_message("now") == None:
+            channel = bot.get_channel(channel_update_id)
+            message = await channel.send(embed=embed)
+            logs.insert_message(Message(message_id=message.id, name="now"))
+        else:
+            message = await bot.get_channel(channel_update_id).fetch_message(logs.get_message("now")[1])
+            await message.edit(embed=embed)
 
 @tasks.loop(hours=1)
 async def RedownloadCalendar():
@@ -420,11 +370,12 @@ async def ForceUpdate():
         ForceUpdate.cancel()
 
 if __name__ == "__main__":
-    config = Config("config.json")
-    TOKEN = config.token
-    CalUrl = config.CalUrl
-    Timezone = config.timezone
-    logs = DataLogs("database.db")
+    config = Config("config.yaml")
+    token = config.get("bot_token")
+    calendar_url = config.get("calendar_url")
+    timezone = config.get("timezone")
+    channel_update_id = int(config.get("channel_update_id"))
+    logs = Database("logs.db")
     delete_ical()
     download_ical()
-    bot.run(TOKEN)
+    bot.run(token=token)
