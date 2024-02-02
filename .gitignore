@@ -137,6 +137,4 @@ dmypy.json
 # calendar
 *.ics
 
-docker-compose.yml
-
 config.yaml
