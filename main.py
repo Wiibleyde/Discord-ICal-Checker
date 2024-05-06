@@ -146,7 +146,10 @@ def getTitle(event):
     Returns:
         string: The title
     """
-    return event.split(" - ")[0]
+    try:
+        return event.split(" - ")[0]
+    except:
+        return event
 
 def getTeacher(event):
     """Return the teacher of the event
@@ -157,7 +160,10 @@ def getTeacher(event):
     Returns:
         string: The teacher
     """
-    return event.split(" - ")[1]
+    try:
+        return event.split(" - ")[1]
+    except:
+        return ""
 
 def isMoreThanDay(timeleft):
     """Return if the time left is more than a day
@@ -258,18 +264,21 @@ async def nextCourse(interaction: discord.Interaction):
         timeleft = CalcTimeLeft(event)
     except:
         embed = discord.Embed(title="Prochain cours", description="Pas de cours", color=0x00ff00)
+        embed.set_footer(text="NatCalBot",icon_url="https://cdn.discordapp.com/avatars/1027219642646806638/6f2d37b52874067f006b5b249bfd65a9")
         await interaction.response.send_message(embed=embed)
         return
     if isMoreThanDay(timeleft):
         embed = discord.Embed(title="Prochain cours", description=f"Le prochain cours à venir.", color=0x00ff00)
+        embed.set_footer(text="NatCalBot",icon_url="https://cdn.discordapp.com/avatars/1027219642646806638/6f2d37b52874067f006b5b249bfd65a9")
         if event.get('location') == None:
             event['location'] = "Nowhere"
-        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary'))}\nÀ {event.get('location')}\n**Dans {timeleft.days} jours**", inline=False)
+        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary')) or 'personne'}\nÀ {event.get('location')}\n**Dans {timeleft.days} jours**", inline=False)
     else:
         embed = discord.Embed(title="Prochain cours", description=f"Le prochain cours à venir.", color=0x00ff00)
+        embed.set_footer(text="NatCalBot",icon_url="https://cdn.discordapp.com/avatars/1027219642646806638/6f2d37b52874067f006b5b249bfd65a9")
         if event.get('location') == None:
             event['location'] = "Nowhere"
-        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary'))}\nÀ {event.get('location')}\n**Dans {getHours(timeleft)}h{getMinutes(timeleft)}**", inline=False)
+        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary')) or 'personne'}\nÀ {event.get('location')}\n**Dans {getHours(timeleft)}h{getMinutes(timeleft)}**", inline=False)
     await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @bot.tree.command(name="week", description="Affiche les cours de la semaine")
@@ -282,6 +291,7 @@ async def weekCourse(interaction: discord.Interaction):
         await interaction.response.send_message(embed=embed, ephemeral=True)
         return
     embed = discord.Embed(title="Cours de la semaine", description="Liste des cours de la semaine", color=0x00ff00)
+    embed.set_footer(text="NatCalBot",icon_url="https://cdn.discordapp.com/avatars/1027219642646806638/6f2d37b52874067f006b5b249bfd65a9")
     for event in WeekEvents:
         # timeleft = CalcTimeLeft(event)
         eventdate = getEventDate(event)
@@ -291,7 +301,7 @@ async def weekCourse(interaction: discord.Interaction):
             eventdate = (eventdate + datetime.timedelta(hours=2)).strftime("%d/%m %H:%M")
         if event.get('location') == None:
             event['location'] = "Nowhere"
-        embed.add_field(name=f"{getTitle(event.get('summary'))} - {getTeacher(event.get('summary'))}", value=f"{eventdate} à {event.get('location')}", inline=False)  
+        embed.add_field(name=f"{getTitle(event.get('summary'))} - {getTeacher(event.get('summary')) or 'personne'}", value=f"{eventdate} à {event.get('location')}", inline=False)  
     await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @bot.tree.command(name="update", description="Mets à jour le calendrier")
@@ -319,10 +329,10 @@ async def help(interaction: discord.Interaction):
     embed.add_field(name="next", value="Affiche le prochain cours", inline=False)
     embed.add_field(name="week", value="Affiche les cours de la semaine", inline=False)
     embed.add_field(name="update", value="Mets à jour le calendrier", inline=False)
-    embed.add_field(name="help", value="Affiche l'aide. *mais naaaan sérieuuuuuux", inline=False)
+    embed.set_footer(text="NatCalBot",icon_url="https://cdn.discordapp.com/avatars/1027219642646806638/6f2d37b52874067f006b5b249bfd65a9")
     await interaction.response.send_message(embed=embed, ephemeral=True)
 
-@tasks.loop(seconds=30)
+@tasks.loop(seconds=120)
 async def ChangeStatus():
     calenderParsed = parse_ical()
     try:
@@ -337,20 +347,28 @@ async def ChangeStatus():
     else:
         await bot.change_presence(activity=discord.Game(name=f"{getTitle(event.get('summary'))} dans {getHours(timeleft)}h{getMinutes(timeleft)}"))
     if nowCourse:
-        embed = discord.Embed(title="Cours en cours", description=f"Le cours actuel.", color=0x00ff00)
-        embed.add_field(name=f"{getTitle(nowCourse.get('summary'))}", value=f"Avec {getTeacher(nowCourse.get('summary'))}", inline=False)
-        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary'))} <t:{int(getEventDate(event).timestamp())}:R>", inline=False)
+        embed = discord.Embed(title="Cours", description=f"# Cours actuel", color=0x00ff00)
+        embed.add_field(name=f"{getTitle(nowCourse.get('summary'))}", value=f"Avec {getTeacher(nowCourse.get('summary')) or 'personne'}\nA {nowCourse.get('location')}\n**Commencé <t:{int(getEventDate(nowCourse).timestamp())}:R>**", inline=False)
+        embed.add_field(name=f"Prochain cours : {getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary')) or 'personne'} <t:{int(getEventDate(event).timestamp())}:R>", inline=False)
+        embed.set_footer(text="NatCalBot",icon_url="https://cdn.discordapp.com/avatars/1027219642646806638/6f2d37b52874067f006b5b249bfd65a9")
         if logs.get_message("now") == None:
             channel = bot.get_channel(channel_update_id)
             message = await channel.send(embed=embed)
             logs.insert_message(Message(message_id=message.id, name="now"))
         else:
-            message = await bot.get_channel(channel_update_id).fetch_message(logs.get_message("now")[1])
-            await message.edit(embed=embed)
+            try:
+                message = await bot.get_channel(channel_update_id).fetch_message(logs.get_message("now")[1])
+                await message.edit(embed=embed)
+            except:
+                logs.delete_message("now")
+                channel = bot.get_channel(channel_update_id)
+                message = await channel.send(embed=embed)
+                logs.insert_message(Message(message_id=message.id, name="now"))
     else:
         embed = discord.Embed(title="Cours en cours", description=f"Le cours actuel.", color=0x00ff00)
         embed.add_field(name='Aucun cours', value='Pas de cours actuellement', inline=False)
-        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary'))} <t:{int(getEventDate(event).timestamp())}:R>", inline=False)
+        embed.add_field(name=f"{getTitle(event.get('summary'))}", value=f"Avec {getTeacher(event.get('summary')) or 'personne'} <t:{int(getEventDate(event).timestamp())}:R>", inline=False)
+        embed.set_footer(text="NatCalBot",icon_url="https://cdn.discordapp.com/avatars/1027219642646806638/6f2d37b52874067f006b5b249bfd65a9")
         if logs.get_message("now") == None:
             channel = bot.get_channel(channel_update_id)
             message = await channel.send(embed=embed)
