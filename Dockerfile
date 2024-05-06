@@ -7,10 +7,7 @@ COPY requirements.txt .
 RUN python3 -m pip install -r requirements.txt
 
 # Copy the source code, configuration file, and database file
-COPY main.py .
-COPY src/config.py .
-COPY src/db.py .
-COPY config.yaml .
+COPY . .
 
 # Start the bot
 CMD ["python", "main.py"]
